@@ -7,7 +7,7 @@ const SupervisorNavSidebar = () => {
   const [showAdditionalItems, setShowAdditionalItems] = useState({
     Announcement: false,
     FYP_Suggestions_All_FYPS: false,
-    ThirdItem: false,
+    MyGroups: false,
   });
 
   const toggleAdditionalItems = (itemName) => {
@@ -45,6 +45,18 @@ const SupervisorNavSidebar = () => {
               <Link to="/supervisor/addFYPideas">- New FYP Ideas</Link>
               <Link to="/supervisor/viewFYPideas">- View FYP Ideas</Link>
               <Link to="/supervisor/viewallFYP">- View all FYPs</Link>
+              {/* <li>- Item B</li>
+              <li>- Item C</li> */}
+            </ul>
+          )}
+        </li> 
+        <li>
+          <button onClick={() => toggleAdditionalItems('MyGroups')}>
+          FYP Groups
+          </button>
+          {showAdditionalItems.MyGroups && (
+            <ul className="additional-items">
+              <Link to="/supervisor/mygroups">- My Groups </Link>
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>

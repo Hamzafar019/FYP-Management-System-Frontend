@@ -36,13 +36,13 @@ const CoordinatorViewAnnouncements = () => {
   return (
     <>
       <div className='announcementButton'>
-        <button onClick={() => setTarget('all')} >All Announcements</button>
+        <button onClick={() =>  setTarget('all')} >All Announcements</button>
         <button onClick={() => setTarget('supervisor')} >Supervisor</button>
         <button onClick={() => setTarget('student')} >Student</button>
-        <button onClick={() => setTarget('both')} >Both</button>
+        <button onClick={() => setTarget('both')} >Both</button> 
       </div>
 
-      <div>
+      <div> 
         {announcements.map((announcement) => (
           <div key={announcement.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
           <h2 style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>ID: {announcement.id}-</span> {announcement.title}</h2>

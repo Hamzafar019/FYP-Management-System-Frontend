@@ -7,6 +7,7 @@ import SupervisorViewAnnouncements from "./SupervisorViewAnnouncements";
 import ViewFYPIdeas from "../ViewFYPIdeas";
 import AllFYP from "../AllFYP";
 import SupervisorFYPNewIdea from "./SupervisorFYPNewIdea";
+import SupervisorMyGroups from "./SupervisorMyGroups";
 
 const Supervisor = () => {
   return (
@@ -20,6 +21,7 @@ const Supervisor = () => {
             <Route exact path="/supervisor/addFYPideas" element={<SupervisorFYPNewIdea/>} />
             <Route exact path="/supervisor/viewallFYP" element={<AllFYP />} />
             <Route exact path="/supervisor/viewFYPideas" element={<ViewFYPIdeas />} />
+            <Route exact path="/supervisor/mygroups" element={<SupervisorMyGroups />} />
           </Routes>
 
         </div>

@@ -6,7 +6,11 @@ const FYPWideView = ({ FYP, onViewChange }) => {
   const [supervisors, setSupervisors] = useState([]);
   const [supervisor, setSupervisor] = useState(null);
   const [reason, setReason] = useState(null);
+  const [semester, setSemester] = useState(null);
+  const [year, setYear] = useState(null);
   const [id, setid] = useState(FYP.id);
+  const [title, settitle] = useState(FYP.title);
+  const [description, setdesciption] = useState(FYP.description);
 
   const handleViewedChange = (event) => {
     setViewed(event.target.value);
@@ -20,6 +24,13 @@ const FYPWideView = ({ FYP, onViewChange }) => {
     setSupervisor(event.target.value);
   };
 
+  const handleSemesterChange = (event) => {
+    setSemester(event.target.value);
+  };
+
+  const handleYearChange = (event) => {
+    setYear(parseInt(event.target.value));
+  };
   const handleReasonChange = (event) => {
     setReason(event.target.value);
   };
@@ -38,9 +49,12 @@ const FYPWideView = ({ FYP, onViewChange }) => {
   // Determine whether to disable Save and Cancel buttons based on "viewed" value
   const isSaveDisabled = viewed === "no";
   const isCancelDisabled = viewed === "yes";
+  const currentYear = new Date().getFullYear();
+  const previousYears = Array.from({ length: 10 }, (_, index) => currentYear - index);
+  
 
   return (
-    <div className="login-form"  style={{ marginTop: '200px', display:'flex',flexDirection:'column'}}>
+    <div className="login-form"  style={{ marginTop: '200px', display:'flex',flexDirection:'column', height:"400px"}}>
       {/* Display FYP details */}
       <h2>{FYP.title}</h2>
       <p>{FYP.description}</p>
@@ -65,6 +79,7 @@ const FYPWideView = ({ FYP, onViewChange }) => {
 
       {/* Display Supervisor name options if viewed is yes and approve is yes */}
       {viewed === "yes" && approve === "yes" && (
+        <>
         <label>
           Supervisor:
           <select value={supervisor} onChange={handleSupervisorChange}>
@@ -76,6 +91,38 @@ const FYPWideView = ({ FYP, onViewChange }) => {
             ))}
           </select>
         </label>
+        
+
+         {/* Select Semester */}
+    <label>
+      Semester:
+      <select value={semester} onChange={handleSemesterChange}>
+        <option value="">Select a Semester</option>
+        <option value="Fall">Fall</option>
+        <option value="Spring">Spring</option>
+      </select>
+    </label>
+    
+
+
+    {/* Enter Year */}
+    <label>
+        Year:
+        <select value={year} onChange={handleYearChange}>
+          <option value="">Select a Year</option>
+          {previousYears.map((year, index) => (
+            <option key={index} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </label>
+
+        </>
+
+
+
+        
       )}
 
       {/* Display Reason text area if approve is no */}
@@ -87,7 +134,7 @@ const FYPWideView = ({ FYP, onViewChange }) => {
       )}
 
       {/* Add buttons for actions */}
-      <button onClick={() => onViewChange("save", viewed, approve, reason, supervisor, id)} disabled={isSaveDisabled} 
+      <button onClick={() => onViewChange("save", viewed, approve, reason, supervisor, id, title, description, semester, year)} disabled={isSaveDisabled} 
       style={{width:'200px',marginTop:"14px", display: viewed === "yes" ? "inline-block":"none" }}>
         Save
       </button>

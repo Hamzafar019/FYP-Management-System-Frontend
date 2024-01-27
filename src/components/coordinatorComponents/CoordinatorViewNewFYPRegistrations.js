@@ -37,18 +37,46 @@ const CoordinatorViewNewFYPRegistrations = () => {
   };
 
   // Function to handle changes in the wide view (save/cancel)
-  const handleWideViewChange = (action, viewedValue, approveValue, reasonValue, supervisor, id) => {
+  const handleWideViewChange = (action, viewedValue, approveValue, reasonValue, supervisor, id, title, description ,semester, year) => {
     // Implement logic based on the action (save/cancel)
     if (action === "save") {
       
       const url = `http://localhost:3001/FYPregistration/update?id=${id}`;
       
-      const data = {
+      const data   = {
         viewedValue: viewedValue, // replace with the actual value
         approveValue: approveValue, // replace with the actual value
         reasonValue: reasonValue, // replace with the actual value
         supervisor: supervisor, // replace with the actual value
       };
+      const url2=`http://localhost:3001/all_FYP`;
+      const data2={
+      
+          "title":title,
+          "description":description,
+          "semester":semester,
+          "year":year
+        
+      }
+
+      fetch(url2, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          authToken: `${authToken}`,
+          // Add any other headers as needed (e.g., authentication token)
+        },
+        body: JSON.stringify(data2),
+      })
+        .then(response => response.json())
+        .then(result => {
+          // Handle the response as needed
+        })
+        .catch(error => {
+          console.error('Error updating ALL FYPs record:', error);
+          // Handle the error as needed
+        });
+
       
       fetch(url, {
         method: 'PUT',
