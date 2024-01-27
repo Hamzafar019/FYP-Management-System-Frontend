@@ -1,24 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import LoginForm from "./components/LoginForm";
+import Navbar from "./components/Navbar";
+import Coordinator from "./components/coordinatorComponents/Coordinator";
+import Supervisor from "./components/supervisorComponents/Supervisor";
+import Admin from "./components/adminComponents/Admin";
+import Student from "./components/studentComponents/Student";
 
 function App() {
+  const [userRole, setUserRole] = useState(
+    localStorage.getItem("userRole") || null
+  );
+
+  const handleLogin = (role) => {
+    localStorage.setItem("userRole", role);
+    setUserRole(role);
+
+    // Simulate changing the URL without using react-router-dom
+    window.history.pushState(null, "", `/${role}`);
+  };
+
+  const handleSignUp = () => {
+    localStorage.removeItem('userRole');
+    setUserRole(null);
+  };
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      localStorage.removeItem("userRole");
+      setUserRole(null);
+
+      // Simulate changing the URL without using react-router-dom
+      window.history.pushState(null, "", "/");
+    }, 900000); // 30 seconds in milliseconds
+    return () => clearTimeout(timeoutId);
+  }, [userRole]);
+
+  const renderComponentByRole = () => {
+    switch (userRole) {
+      case "student":
+        return <Student />;
+      case "coordinator":
+        return <Coordinator />;
+      case "supervisor":
+        return <Supervisor />;
+      case "admin":
+        return <Admin />;
+      default:
+        return <LoginForm onLogin={handleLogin} />;
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {userRole !== null && <Navbar onSignUpClick={handleSignUp} />}
+      {/* {<Navbar onSignUpClick={handleSignUp} />} */}
+      {renderComponentByRole()}
+    </>
   );
 }
 

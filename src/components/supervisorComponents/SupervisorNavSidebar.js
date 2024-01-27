@@ -1,0 +1,72 @@
+// CollapsibleNavbar.js
+import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
+import './Supervisor.css';
+
+const SupervisorNavSidebar = () => {
+  const [showAdditionalItems, setShowAdditionalItems] = useState({
+    Announcement: false,
+    FYP_Suggestions_All_FYPS: false,
+    ThirdItem: false,
+  });
+
+  const toggleAdditionalItems = (itemName) => {
+    setShowAdditionalItems((prevItems) => ({
+      ...prevItems,
+      [itemName]: !prevItems[itemName]
+    }));
+  };
+  
+  return (
+    <div id='navsidebar'>
+    <nav>
+      <ul style={{ marginTop: '80px' }}>
+        <li>
+          <Link to="/supervisor">Home</Link>
+        </li>
+
+        <li>
+          <button onClick={() => toggleAdditionalItems('Announcement')}>
+          Announcements
+          </button>
+          {showAdditionalItems.Announcement && (
+            <ul className="additional-items">
+              <Link to="/supervisor/viewannouncements">- View Announcements</Link>
+              {/* <Link to="/student">- All Annuncement</Link> */}
+            </ul>
+          )}
+        </li>
+        <li>
+          <button onClick={() => toggleAdditionalItems('FYP_Suggestions_All_FYPS')}>
+          FYP Suggestions, All FYPs
+          </button>
+          {showAdditionalItems.FYP_Suggestions_All_FYPS && (
+            <ul className="additional-items">
+              <Link to="/supervisor/addFYPideas">- New FYP Ideas</Link>
+              <Link to="/supervisor/viewFYPideas">- View FYP Ideas</Link>
+              <Link to="/supervisor/viewallFYP">- View all FYPs</Link>
+              {/* <li>- Item B</li>
+              <li>- Item C</li> */}
+            </ul>
+          )}
+        </li> 
+        {/* <li>
+          <button onClick={() => toggleAdditionalItems('ThirdItem')}>
+          Third Item
+          </button>
+          {showAdditionalItems.ThirdItem && (
+            <ul className="additional-items">
+              <li>- Item X</li>
+              <li>- Item Y</li>
+              <li>- Item Z</li>
+            </ul>
+          )}
+        </li> */}
+
+      </ul>
+    </nav>
+    </div>
+  );
+};
+
+export default SupervisorNavSidebar;
