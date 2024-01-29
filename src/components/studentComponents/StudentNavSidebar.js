@@ -8,6 +8,7 @@ const StudentNavSidebar = () => {
     Announcement: false,
     FYP_Suggestions_All_FYPS: false,
     FYP_Registrations: false,
+    Group: false,
   });
 
   const toggleAdditionalItems = (itemName) => {
@@ -57,6 +58,16 @@ const StudentNavSidebar = () => {
             <ul className="additional-items">
               <Link to="/student/FYPregistrations">- FYP Registration</Link>  
               <Link to="/student/FYPstatus">- FYP Status</Link>  
+            </ul>
+          )}
+        </li> 
+        <li>
+          <button onClick={() => toggleAdditionalItems('Group')}>
+          Group
+          </button>
+          {showAdditionalItems.Group && (
+            <ul className="additional-items">
+              <Link to="/student/viewvideos">- View Videos</Link>  
             </ul>
           )}
         </li> 

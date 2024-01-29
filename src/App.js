@@ -20,12 +20,14 @@ function App() {
   };
 
   const handleSignUp = () => {
-    localStorage.removeItem('userRole');
+    // localStorage.removeItem('userRole');
+    localStorage.clear();
     setUserRole(null);
   };
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      localStorage.removeItem("userRole");
+      // localStorage.removeItem("userRole");
+      localStorage.clear();
       setUserRole(null);
 
       // Simulate changing the URL without using react-router-dom

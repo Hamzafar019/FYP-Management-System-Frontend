@@ -58,6 +58,7 @@ const SupervisorNavSidebar = () => {
             <ul className="additional-items">
               <Link to="/supervisor/mygroups">- My Groups </Link>
               <Link to="/supervisor/addvideos">- Add Videos </Link>
+              <Link to="/supervisor/viewvideos">- View Videos </Link>
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>
