@@ -57,6 +57,7 @@ const SupervisorNavSidebar = () => {
           {showAdditionalItems.MyGroups && (
             <ul className="additional-items">
               <Link to="/supervisor/mygroups">- My Groups </Link>
+              <Link to="/supervisor/addvideos">- Add Videos </Link>
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>
