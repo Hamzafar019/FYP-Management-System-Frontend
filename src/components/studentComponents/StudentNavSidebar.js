@@ -68,6 +68,7 @@ const StudentNavSidebar = () => {
           {showAdditionalItems.Group && (
             <ul className="additional-items">
               <Link to="/student/viewvideos">- View Videos</Link>  
+              <Link to="/student/submitwork">- Submit Work</Link>  
             </ul>
           )}
         </li> 

@@ -8,6 +8,8 @@ import CoordinatorViewAnnouncements from "./CoordinatorViewAnnouncements";
 import ViewFYPIdeas from "../ViewFYPIdeas";
 import AllFYP from "../AllFYP";
 import CoordinatorViewNewFYPRegistrations from "./CoordinatorViewNewFYPRegistrations";
+import CoordinatorCreateSubmission from "./CoordinatorCreateSubmission";
+import CoordinatorViewSubmission from "./CoordinatorViewSubmission";
 const Coordinator = () => {
   return (    
     <>
@@ -21,6 +23,10 @@ const Coordinator = () => {
             <Route exact path="/coordinator/viewFYPideas" element={<ViewFYPIdeas />} />
             <Route exact path="/coordinator/viewallFYP" element={<AllFYP />} />
             <Route exact path="/coordinator/newRegistrations" element={<CoordinatorViewNewFYPRegistrations />} />
+            <Route exact path="/coordinator/newSubmission" element={<CoordinatorCreateSubmission />} />
+            <Route exact path="/coordinator/viewSubmission" element={<CoordinatorViewSubmission />} />
+            
+            
           </Routes>
         </div>
       </Router>

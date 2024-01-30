@@ -119,7 +119,7 @@ const SupervisorAddRelevantData = () => {
       {/* Video link input */}
       <input type="text" name="videoLink" placeholder="Enter link"  value={formData.videoLink} onChange={handleInputChange} />
       {/* Video upload input */}
-      <input type="file" accept="video/*"   onChange={handleFileChange} />
+      <input type="file" accept="video/mp4"   onChange={handleFileChange} />
       <button type="button" onClick={handleSubmit}>Submit</button>
       {success && (
           <div className="success-message">

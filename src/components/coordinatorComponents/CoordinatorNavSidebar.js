@@ -8,6 +8,7 @@ const CoordinatorNavSidebar = () => {
     Announcement: false,
     FYP_Suggestions_All_FYPS: false,
     FYP_new_registrations: false,
+    FYP_create_submission: false,
   });
 
   const toggleAdditionalItems = (itemName) => {
@@ -55,7 +56,18 @@ const CoordinatorNavSidebar = () => {
           </button>
           {showAdditionalItems.FYP_new_registrations && (
             <ul className="additional-items">
-              <Link to="/coordinator/newRegistrations">New Registrations</Link>
+              <Link to="/coordinator/newRegistrations">- New Registrations</Link>
+            </ul>
+          )}
+        </li> 
+        <li>
+          <button onClick={() => toggleAdditionalItems('FYP_create_submission')}>
+          FYP Submission
+          </button>
+          {showAdditionalItems.FYP_create_submission && (
+            <ul className="additional-items">
+              <Link to="/coordinator/newSubmission">- New Submission</Link>
+              <Link to="/coordinator/viewSubmission">- View Submission</Link>
             </ul>
           )}
         </li>

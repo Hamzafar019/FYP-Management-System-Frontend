@@ -10,6 +10,7 @@ import StudentFYPRegistrationUpdate from "./StudentFYPRegistrationUpdate";
 import AllFYP from "../AllFYP";
 import StudentFYPstatus from "./StudentFYPstatus";
 import FYP_related_videos from "../FYP_related_videos";
+import StudentFYPWorkSubmission from "./StudentFYPWorkSubmission";
 
 const Student = () => {
   return (    
@@ -26,6 +27,9 @@ const Student = () => {
             <Route exact path="/student/FYPstatus" element={<StudentFYPstatus />} />
             <Route path="/student/FYPregistrationupdate/:projectId" element={<StudentFYPRegistrationUpdate />} />
             <Route exact path="/student/viewvideos" element={<FYP_related_videos />} />
+            <Route exact path="/student/submitwork" element={<StudentFYPWorkSubmission />} />
+
+            
 
           </Routes>
         </div>
