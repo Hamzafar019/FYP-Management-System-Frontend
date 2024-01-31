@@ -4,11 +4,12 @@ function CoordinatorViewSubmission() {
   const [submissions, setSubmissions] = useState([]);
   const [editingSubmissionId, setEditingSubmissionId] = useState(null);
   const [updatedName, setUpdatedName] = useState('');
+  const [updatedOpen, setUpdatedOpen] = useState('');
   const [updatedDueDate, setUpdatedDueDate] = useState('');
   const authToken = localStorage.getItem('authToken');
   const fetchSubmissions = async () => {
     try {
-      const response = await fetch('http://localhost:3001/submission/view', {
+      const response = await fetch('http://localhost:3001/submission/viewall', {
         headers: {
           'authToken': authToken,
           'Content-Type': 'application/json'
@@ -38,11 +39,13 @@ function CoordinatorViewSubmission() {
     setEditingSubmissionId(id);
     setUpdatedName(submissionToEdit.name);
     setUpdatedDueDate(submissionToEdit.dueDate);
+    setUpdatedOpen(submissionToEdit.open ==='yes'? 'yes' : 'no');
   };
 
   const handleCancelEdit = () => {
     setEditingSubmissionId(null);
     setUpdatedName('');
+    setUpdatedOpen('');
     setUpdatedDueDate('');
   };
 
@@ -54,7 +57,7 @@ function CoordinatorViewSubmission() {
           'authToken': authToken,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: updatedName, dueDate: updatedDueDate })
+        body: JSON.stringify({ name: updatedName, dueDate: updatedDueDate, open: updatedOpen==='yes' ? 'yes' : 'no' })
       });
 
       if (!response.ok) {
@@ -64,6 +67,7 @@ function CoordinatorViewSubmission() {
       // Refresh submission list
       setEditingSubmissionId(null);
       setUpdatedName('');
+      setUpdatedOpen('');
       setUpdatedDueDate('');
       fetchSubmissions();
     } catch (error) {
@@ -92,6 +96,13 @@ function CoordinatorViewSubmission() {
                   <span style={{ fontSize: '12px', color: 'black' }}>ID: {submission.id}-</span> 
                   Name: <input type="text" value={updatedName} onChange={(e) => setUpdatedName(e.target.value)} />
                 </p>
+
+                <p style={{ margin: '8px 0 8px 0', color: '#333' }}>
+                Open: <select value={updatedOpen} onChange={(e) => setUpdatedOpen(e.target.value)}>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </p>
                 <p style={{ margin: '8px 0 8px 0', color: '#333' }}>
                   Due Date: <input type="date" value={updatedDueDate} onChange={(e) => setUpdatedDueDate(e.target.value)} />
                 </p>
@@ -101,7 +112,8 @@ function CoordinatorViewSubmission() {
             ) : (
               <div>
                 <p style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>ID: {submission.id}-</span> Name: {submission.name}</p>
-                <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Due Date: {formatDate(submission.dueDate)}</p>
+                <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Open: {submission.open ==='yes'? 'Yes' : 'No'}</p>
+             <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Due Date: {formatDate(submission.dueDate)}</p>
                 <button style={{backgroundColor:"wheat",width:'100px', borderRadius:"5px"}} onClick={() => handleEdit(submission.id)}>Edit</button>
               </div>
             )}
