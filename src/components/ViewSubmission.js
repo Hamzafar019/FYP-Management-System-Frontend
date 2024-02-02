@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-function CoordinatorViewSubmission() {
+function ViewSubmission() {
   const [submissions, setSubmissions] = useState([]);
   const [editingSubmissionId, setEditingSubmissionId] = useState(null);
   const [updatedName, setUpdatedName] = useState('');
   const [updatedOpen, setUpdatedOpen] = useState('');
   const [updatedDueDate, setUpdatedDueDate] = useState('');
+  const [updatedWeightage, setUpdatedWeightage] = useState('');
   const authToken = localStorage.getItem('authToken');
+  const userRole = localStorage.getItem('userRole');
   const fetchSubmissions = async () => {
     try {
       const response = await fetch('http://localhost:3001/submission/viewall', {
@@ -40,6 +42,7 @@ function CoordinatorViewSubmission() {
     setUpdatedName(submissionToEdit.name);
     setUpdatedDueDate(submissionToEdit.dueDate);
     setUpdatedOpen(submissionToEdit.open ==='yes'? 'yes' : 'no');
+    setUpdatedWeightage(submissionToEdit.weightage);
   };
 
   const handleCancelEdit = () => {
@@ -47,6 +50,7 @@ function CoordinatorViewSubmission() {
     setUpdatedName('');
     setUpdatedOpen('');
     setUpdatedDueDate('');
+    setUpdatedWeightage('');
   };
 
   const handleSaveEdit = async () => {
@@ -57,7 +61,8 @@ function CoordinatorViewSubmission() {
           'authToken': authToken,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: updatedName, dueDate: updatedDueDate, open: updatedOpen==='yes' ? 'yes' : 'no' })
+        body: JSON.stringify({ name: updatedName, dueDate: updatedDueDate, open: updatedOpen==='yes' ? 'yes' : 'no',
+        weightage: updatedWeightage })
       });
 
       if (!response.ok) {
@@ -69,6 +74,7 @@ function CoordinatorViewSubmission() {
       setUpdatedName('');
       setUpdatedOpen('');
       setUpdatedDueDate('');
+      setUpdatedWeightage('');
       fetchSubmissions();
     } catch (error) {
       console.error('Error updating submission:', error);
@@ -86,7 +92,7 @@ function CoordinatorViewSubmission() {
 
   return (
     <div>
-      <h2>Submission List</h2>
+      <h2>Submissions List</h2>
       <ul>
         {submissions.map(submission => (
           <li key={submission.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
@@ -106,6 +112,10 @@ function CoordinatorViewSubmission() {
                 <p style={{ margin: '8px 0 8px 0', color: '#333' }}>
                   Due Date: <input type="date" value={updatedDueDate} onChange={(e) => setUpdatedDueDate(e.target.value)} />
                 </p>
+                <p style={{ margin: '8px 0', color: '#333' }}>
+                  Weightage: <input type="number" value={updatedWeightage} onChange={(e) => setUpdatedWeightage(e.target.value)} />
+                </p>
+
                 <button style={{backgroundColor:"green",width:'70px', borderRadius:"5px"}}onClick={handleSaveEdit}>Save</button>
                 <button style={{backgroundColor:"wheat",width:'70px', borderRadius:"5px"}}onClick={handleCancelEdit}>Cancel</button>
               </div>
@@ -114,14 +124,23 @@ function CoordinatorViewSubmission() {
                 <p style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>ID: {submission.id}-</span> Name: {submission.name}</p>
                 <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Open: {submission.open ==='yes'? 'Yes' : 'No'}</p>
              <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Due Date: {formatDate(submission.dueDate)}</p>
+             <p style={{ margin: '8px 0', color: '#333' }}>
+                  Weightage: {submission.weightage}
+                </p>
+                {userRole === "coordinator" ? (
                 <button style={{backgroundColor:"wheat",width:'100px', borderRadius:"5px"}} onClick={() => handleEdit(submission.id)}>Edit</button>
-              </div>
+                ) : (
+                  null
+                )}
+                </div>
+              
             )}
           </li>
         ))}
       </ul>
     </div>
+    
   );
 }
 
-export default CoordinatorViewSubmission;
+export default ViewSubmission;

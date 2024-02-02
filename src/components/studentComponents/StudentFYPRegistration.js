@@ -60,10 +60,10 @@ const StudentFYPRegistration = () => {
         return response.json();
       })
       .then((data) => {
-        setRegistrationData('FYP idea posted successfully:', data)
+        setRegistrationData('FYP idea posted successfully', data)
       })
       .catch((error) => {
-        setError(`Error posting FYP idea. ${error.message}`)
+        setError(`${error.message}`)
       });
   };
 
@@ -92,7 +92,7 @@ const StudentFYPRegistration = () => {
         {registrationData && (
           <div className="success-message">
             {/* Print other registration data as needed */}
-            <pre>{JSON.stringify(registrationData, null, 2)}</pre>
+            <p>{registrationData}</p>
           </div>
         )}
 

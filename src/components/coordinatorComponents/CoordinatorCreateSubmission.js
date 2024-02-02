@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function CoordinatorCreateSubmission() {
   const [name, setName] = useState('');
   const [dueDate, setDueDate] = useState('');
+  const [weightage, setWeightage] = useState('');
   const [error, setError] = useState('');
   const [done, setDone] = useState(null);
 
@@ -25,7 +26,7 @@ function CoordinatorCreateSubmission() {
           'Content-Type': 'application/json',
           'authToken': authToken
         },
-        body: JSON.stringify({ name, dueDate })
+        body: JSON.stringify({ name, dueDate, weightage})
       });
 
       if (!response.ok) {
@@ -43,7 +44,7 @@ function CoordinatorCreateSubmission() {
   };
 
   return (
-    <div className="login-form" style={{marginTop:"200px",height:"250px"}}>
+    <div className="login-form" style={{marginTop:"200px",height:"280px"}}>
     <form onSubmit={handleSubmit}>
       <div style={{marginTop:"15px"}}>
         <label htmlFor="name" >Name:</label>
@@ -52,6 +53,16 @@ function CoordinatorCreateSubmission() {
           id="name" 
           value={name} 
           onChange={(e) => setName(e.target.value)} 
+          required 
+        />
+      </div>
+      <div style={{marginTop:"15px"}}>
+        <label htmlFor="weightage" >Weightage:</label>
+        <input 
+          type="number" 
+          id="weightage" 
+          value={weightage} 
+          onChange={(e) => setWeightage(e.target.value)} 
           required 
         />
       </div>

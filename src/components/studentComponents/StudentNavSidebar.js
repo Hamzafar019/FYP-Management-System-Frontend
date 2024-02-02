@@ -43,8 +43,12 @@ const StudentNavSidebar = () => {
           </button>
           {showAdditionalItems.FYP_Suggestions && (
             <ul className="additional-items">
+            <Link to="/student/scores">- Scores</Link>
               <Link to="/student/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/student/viewallFYP">- View all FYPs</Link>
+              <Link to="/student/rejectedFYP">- Rejected FYPs</Link>
+
+              
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>
@@ -67,8 +71,10 @@ const StudentNavSidebar = () => {
           </button>
           {showAdditionalItems.Group && (
             <ul className="additional-items">
+            <Link to="/student/viewFYPsubmissions">- FYP Submissions</Link>  
               <Link to="/student/viewvideos">- View Videos</Link>  
               <Link to="/student/submitwork">- Submit Work</Link>  
+              <Link to="/student/meetingsdetails">- Meetings Details</Link>  
             </ul>
           )}
         </li> 

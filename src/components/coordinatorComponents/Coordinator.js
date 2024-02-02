@@ -9,7 +9,9 @@ import ViewFYPIdeas from "../ViewFYPIdeas";
 import AllFYP from "../AllFYP";
 import CoordinatorViewNewFYPRegistrations from "./CoordinatorViewNewFYPRegistrations";
 import CoordinatorCreateSubmission from "./CoordinatorCreateSubmission";
-import CoordinatorViewSubmission from "./CoordinatorViewSubmission";
+import ViewSubmission from "../ViewSubmission";
+import Scores from "../Scores";
+import Rejected_FYP from "../Rejected_FYP";
 const Coordinator = () => {
   return (    
     <>
@@ -24,7 +26,10 @@ const Coordinator = () => {
             <Route exact path="/coordinator/viewallFYP" element={<AllFYP />} />
             <Route exact path="/coordinator/newRegistrations" element={<CoordinatorViewNewFYPRegistrations />} />
             <Route exact path="/coordinator/newSubmission" element={<CoordinatorCreateSubmission />} />
-            <Route exact path="/coordinator/viewSubmission" element={<CoordinatorViewSubmission />} />
+            <Route exact path="/coordinator/viewSubmission" element={<ViewSubmission />} />
+            <Route exact path="/coordinator/scores" element={<Scores />} />
+            <Route exact path="/coordinator/rejectedFYP" element={<Rejected_FYP />} />
+            
             
             
           </Routes>

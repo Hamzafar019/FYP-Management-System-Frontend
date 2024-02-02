@@ -43,8 +43,10 @@ const CoordinatorNavSidebar = () => {
           </button>
           {showAdditionalItems.FYP_Suggestions_All_FYPS && (
             <ul className="additional-items">
+              <Link to="/coordinator/scores">- Scores</Link>
               <Link to="/coordinator/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/coordinator/viewallFYP">- View all FYPs</Link>
+              <Link to="/coordinator/rejectedFYP">- Rejected FYPs</Link>
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>

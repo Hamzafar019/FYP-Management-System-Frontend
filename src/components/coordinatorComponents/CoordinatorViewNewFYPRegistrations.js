@@ -49,6 +49,7 @@ const CoordinatorViewNewFYPRegistrations = () => {
         reasonValue: reasonValue, // replace with the actual value
         supervisor: supervisor, // replace with the actual value
       };
+      if(approveValue==="yes"){
       const url2=`http://localhost:3001/all_FYP`;
       const data2={
       
@@ -76,7 +77,37 @@ const CoordinatorViewNewFYPRegistrations = () => {
           console.error('Error updating ALL FYPs record:', error);
           // Handle the error as needed
         });
+      }
+      else if(approveValue==="no"){
+        const url2=`http://localhost:3001/all_FYP/rejected`;
+        const data2={
+        
+            "title":title,
+            "description":description,
+            "reason":reasonValue
+          
+        }
+  
+        fetch(url2, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            authToken: `${authToken}`,
+            // Add any other headers as needed (e.g., authentication token)
+          },
+          body: JSON.stringify(data2),
+        })
+          .then(response => response.json())
+          .then(result => {
+            // Handle the response as needed
+          })
+          .catch(error => {
+            console.error('Error updating ALL FYPs record:', error);
+            // Handle the error as needed
+          });
 
+
+      }
       
       fetch(url, {
         method: 'PUT',

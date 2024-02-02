@@ -11,6 +11,11 @@ import SupervisorMyGroups from "./SupervisorMyGroups";
 import SupervisorAddRelevantData from "./SupervisorAddRelevantData";
 import FYP_related_videos from "../FYP_related_videos";
 import SupervisorViewWork from "./SupervisorViewWork";
+import SupervisorCreateMeeting from "./SupervisorCreateMeeting";
+import ViewSubmission from "../ViewSubmission";
+import Scores from "../Scores";
+import Rejected_FYP from "../Rejected_FYP";
+import MeetingsDetails from "./MeetingsDetails";
 
 const Supervisor = () => {
   return (
@@ -28,6 +33,14 @@ const Supervisor = () => {
             <Route exact path="/supervisor/addvideos" element={<SupervisorAddRelevantData />} />
             <Route exact path="/supervisor/viewvideos" element={<FYP_related_videos />} />
             <Route exact path="/supervisor/viewwork" element={<SupervisorViewWork />} />
+            <Route exact path="/supervisor/viewFYPsubmissions" element={<ViewSubmission />} />
+            <Route exact path="/supervisor/scores" element={<Scores />} />
+            <Route exact path="/supervisor/rejectedFYP" element={<Rejected_FYP />} />
+            <Route exact path="/supervisor/createmeetings" element={<SupervisorCreateMeeting />} />
+            <Route exact path="/supervisor/meetingsdetails" element={<MeetingsDetails />} />
+            
+
+            
           </Routes>
 
         </div>

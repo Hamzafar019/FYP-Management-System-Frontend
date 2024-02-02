@@ -42,9 +42,11 @@ const SupervisorNavSidebar = () => {
           </button>
           {showAdditionalItems.FYP_Suggestions_All_FYPS && (
             <ul className="additional-items">
+              <Link to="/supervisor/scores">- Scores</Link>
               <Link to="/supervisor/addFYPideas">- New FYP Ideas</Link>
               <Link to="/supervisor/viewFYPideas">- View FYP Ideas</Link>
               <Link to="/supervisor/viewallFYP">- View all FYPs</Link>
+              <Link to="/supervisor/rejectedFYP">- Rejected FYP</Link>
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>
@@ -52,11 +54,15 @@ const SupervisorNavSidebar = () => {
         </li> 
         <li>
           <button onClick={() => toggleAdditionalItems('MyGroups')}>
-          FYP Groups
+          FYP Groups and Submissions
           </button>
           {showAdditionalItems.MyGroups && (
             <ul className="additional-items">
+              <Link to="/supervisor/viewFYPsubmissions">- View FYP Submission </Link>
               <Link to="/supervisor/mygroups">- My Groups </Link>
+              <Link to="/supervisor/createmeetings">- Create Meetings </Link>
+              <Link to="/supervisor/meetingsdetails">- Meetings Details </Link>
+              
               <Link to="/supervisor/addvideos">- Add Videos </Link>
               <Link to="/supervisor/viewvideos">- View Videos </Link>
               <Link to="/supervisor/viewwork">- View Work </Link>
