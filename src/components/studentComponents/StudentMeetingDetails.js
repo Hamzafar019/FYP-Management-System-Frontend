@@ -14,7 +14,14 @@ function StudentMeetingDetails() {
       }
     })
     .then(response => response.json())
-    .then(data => setGroup(data[0])) 
+    .then(data => {
+      // Check if data exists
+      if (data && data.length > 0) {
+        setGroup(data[0]); // Set group data
+      } else {
+        setGroup([]); // Set empty array if no data
+      }
+    })
     .catch(error => console.error('Error fetching groups:', error));
 
     // Fetch meetings from the server
@@ -24,7 +31,14 @@ function StudentMeetingDetails() {
       }
     })
     .then(response => response.json())
-    .then(data => setMeetings(data))
+    .then(data => {
+      // Check if data exists
+      if (data && data.length > 0) {
+        setMeetings(data); // Set meetings data
+      } else {
+        setMeetings([]); // Set empty array if no data
+      }
+    })
     .catch(error => console.error('Error fetching meetings:', error));
 
    
@@ -98,7 +112,11 @@ function StudentMeetingDetails() {
         </select>
       </div>
       <ul>
-        {filteredMeetings.map(meeting => (
+        
+      {filteredMeetings.length === 0 ? (
+          <p style={{marginTop:"20px",color:"black",fontSize:"1.5rem"}}>No Meetings</p>
+        ) : (
+        filteredMeetings.map(meeting => (
           <li key={meeting.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
               <p style={{ fontSize: '16px', color: 'black' }}>Date Time: {formatDateTime(meeting.dateTime)}</p>
             <p style={{ fontSize: '16px', color: 'black' }}>Meeting Done: {meeting.done}</p>
@@ -125,7 +143,7 @@ function StudentMeetingDetails() {
               </>
             )}
       </li>
-        ))}
+        )))}
       </ul>
     </div>
   );

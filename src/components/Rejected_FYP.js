@@ -31,7 +31,7 @@ const Rejected_FYP = () => {
                         </div>
                     ))
                 ) : (
-                    <p style={{color:"wheat"}}>No rejected Final Year Projects till yet.</p>
+                    <p style={{marginTop:"20px",marginLeft:"200px",color:"wheat",fontSize:"2rem"}}>No rejected Final Year Project.</p>
                 )}
             </div>
         </>

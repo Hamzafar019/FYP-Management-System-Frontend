@@ -11,12 +11,17 @@ const AdminNavSidebar = () => {
     <div id='navsidebar'>
     <nav>
       <ul style={{ marginTop: '80px' }}>
-        <li>
-          <Link to="/admin">Home</Link>
-        </li>
-        <li>
-          <Link to="/admin/registration">Registration</Link>
-        </li>
+          <Link to="/admin">- Home</Link>
+      
+
+    
+          <Link to="/admin/registration">- Registration</Link>
+       
+
+        <Link to="/admin/adminchangepassword">- Change User Password</Link>
+
+
+        
       </ul>
     </nav>
     </div>

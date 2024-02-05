@@ -21,7 +21,7 @@ const StudentFYPstatus = () => {
         if (!response.ok) {
           // Handle non-2xx responses
           const errorData = await response.json();
-          setError(`Error (${response.status}): ${errorData.error}`);
+          setError(`Error ${errorData.error}`);
           return;
 
         }
@@ -68,7 +68,7 @@ const StudentFYPstatus = () => {
           ))}
         </div>
       ) : (
-        <p>{error}</p>
+        <p style={{marginTop:"200px",color:"black",marginLeft:"200px",fontSize:"1.5rem"}}>{error}</p>
         // <p>{error || 'Loading...'}</p>
       )}
     </div>

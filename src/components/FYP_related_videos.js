@@ -31,7 +31,7 @@ function FYP_related_videos() {
     <div>
       <h1>Relevant Videos</h1>
       {videos.length === 0 ? (
-        <p>No relevant videos found.</p>
+        <p style={{marginTop:"20px",fontSize:"1.5rem"}}>No videos to show.</p>
       ) : (
         videos.map(video => (
           <div key={video.id} style={{ border: "5px solid wheat", marginTop: "50px", padding: "10px", borderRadius: "5px" }}>

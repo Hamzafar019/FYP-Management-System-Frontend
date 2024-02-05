@@ -9,24 +9,46 @@ function MeetingsDetails() {
 
   useEffect(() => {
     // Fetch groups from the server
-    fetch('http://localhost:3001/groups/mygroups', {
-      headers: {
-        'authToken': `${localStorage.getItem('authToken')}`
+   // Fetch groups from the server
+fetch('http://localhost:3001/groups/mygroups', {
+  headers: {
+      'authToken': `${localStorage.getItem('authToken')}`
+  }
+})
+.then(response => {
+  if (!response.ok) {
+      if (response.status === 404) {
+          // If 404 error, set meetings to an empty array
+          setGroups([]);
+          return Promise.reject('No meetings found');
       }
-    })
-    .then(response => response.json())
-    .then(data => setGroups(data))
-    .catch(error => console.error('Error fetching groups:', error));
+      throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+.then(data => setGroups(data))
+.catch(error => console.error('Error fetching groups:', error));
 
-    // Fetch meetings from the server
-    fetch('http://localhost:3001/meetings/mymeetings', {
-      headers: {
-        'authToken': `${localStorage.getItem('authToken')}`
+// Fetch meetings from the server
+fetch('http://localhost:3001/meetings/mymeetings', {
+  headers: {
+      'authToken': `${localStorage.getItem('authToken')}`
+  }
+})
+.then(response => {
+  if (!response.ok) {
+      if (response.status === 404) {
+          // If 404 error, set meetings to an empty array
+          setMeetings([]);
+          return Promise.reject('No meetings found');
       }
-    })
-    .then(response => response.json())
-    .then(data => setMeetings(data))
-    .catch(error => console.error('Error fetching meetings:', error));
+      throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+.then(data => setMeetings(data))
+.catch(error => console.error('Error fetching meetings:', error));
+
   }, []);
 
   useEffect(() => {
@@ -140,7 +162,12 @@ function MeetingsDetails() {
       </div>
       
       <ul>
-        {filteredMeetings.map(meeting => (
+
+      {filteredMeetings.length === 0 ? (
+          <p style={{marginTop:"20px",color:"black",fontSize:"1.5rem"}}>No Meetings</p>
+        ) : (
+
+        filteredMeetings.map(meeting => (
           <li key={meeting.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
             <p style={{ fontSize: '16px', color: 'black' }}> Group ID: {meeting.groupId}</p>
             <p style={{ fontSize: '16px', color: 'black' }}>Date Time: 
@@ -209,7 +236,7 @@ function MeetingsDetails() {
 
 <button style={{width:"50px",height:"25px",fontSize:"10px",marginTop:"7px",marginBottom:"5px",paddingBottom:"20px"}} onClick={() => handleEditSubmit(meeting.id)}>Edit</button>
           </li>
-        ))}
+        )))}
       </ul>
     </div>
   );

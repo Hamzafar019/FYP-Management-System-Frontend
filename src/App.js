@@ -19,7 +19,7 @@ function App() {
     window.history.pushState(null, "", `/${role}`);
   };
 
-  const handleSignUp = () => {
+  const handleSignOut = () => {
     // localStorage.removeItem('userRole');
     localStorage.clear();
     setUserRole(null);
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <>
-      {userRole !== null && <Navbar onSignUpClick={handleSignUp} />}
+      {userRole !== null && <Navbar onSignOutClick={handleSignOut} />}
       {/* {<Navbar onSignUpClick={handleSignUp} />} */}
       {renderComponentByRole()}
     </>

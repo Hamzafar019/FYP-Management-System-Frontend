@@ -166,7 +166,7 @@ const CoordinatorViewNewFYPRegistrations = () => {
     : (
       <>
       <p>{updation}</p>
-      <p>No New Projects</p>
+      <p style={{marginTop:"20px",marginLeft:"200px",color:"wheat",fontSize:"2rem"}}>No New Project Registration</p>
       </>
   )}
     </>

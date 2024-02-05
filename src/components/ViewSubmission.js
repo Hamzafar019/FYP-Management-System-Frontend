@@ -92,52 +92,62 @@ function ViewSubmission() {
 
   return (
     <div>
-      <h2>Submissions List</h2>
-      <ul>
-        {submissions.map(submission => (
-          <li key={submission.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-            {editingSubmissionId === submission.id ? (
-              <div>
-                <p style={{ margin: '0', color: 'black' }}>
-                  <span style={{ fontSize: '12px', color: 'black' }}>ID: {submission.id}-</span> 
-                  Name: <input type="text" value={updatedName} onChange={(e) => setUpdatedName(e.target.value)} />
-                </p>
+      <h2 style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>Submissions List</h2>
+      
+      {submissions.length === 0 ? (
+  <p style={{
+    marginTop: "20px",
+    marginLeft: "200px",
+    color: "black",
+    fontSize: "1.5rem",
+  }}>No submissions</p>
+) : (
+  <ul>
+    {submissions.map(submission => (
+      <li key={submission.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+        {editingSubmissionId === submission.id ? (
+          <div>
+            <p style={{ margin: '0', color: 'black' }}>
+              <span style={{ fontSize: '12px', color: 'black' }}>ID: {submission.id}-</span> 
+              Name: <input type="text" value={updatedName} onChange={(e) => setUpdatedName(e.target.value)} />
+            </p>
 
-                <p style={{ margin: '8px 0 8px 0', color: '#333' }}>
-                Open: <select value={updatedOpen} onChange={(e) => setUpdatedOpen(e.target.value)}>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
-              </p>
-                <p style={{ margin: '8px 0 8px 0', color: '#333' }}>
-                  Due Date: <input type="date" value={updatedDueDate} onChange={(e) => setUpdatedDueDate(e.target.value)} />
-                </p>
-                <p style={{ margin: '8px 0', color: '#333' }}>
-                  Weightage: <input type="number" value={updatedWeightage} onChange={(e) => setUpdatedWeightage(e.target.value)} />
-                </p>
+            <p style={{ margin: '8px 0 8px 0', color: '#333' }}>
+              Open: <select value={updatedOpen} onChange={(e) => setUpdatedOpen(e.target.value)}>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </p>
+            <p style={{ margin: '8px 0 8px 0', color: '#333' }}>
+              Due Date: <input type="date" value={updatedDueDate} onChange={(e) => setUpdatedDueDate(e.target.value)} />
+            </p>
+            <p style={{ margin: '8px 0', color: '#333' }}>
+              Weightage: <input type="number" value={updatedWeightage} onChange={(e) => setUpdatedWeightage(e.target.value)} />
+            </p>
 
-                <button style={{backgroundColor:"green",width:'70px', borderRadius:"5px"}}onClick={handleSaveEdit}>Save</button>
-                <button style={{backgroundColor:"wheat",width:'70px', borderRadius:"5px"}}onClick={handleCancelEdit}>Cancel</button>
-              </div>
+            <button style={{backgroundColor:"green",width:'70px', borderRadius:"5px"}}onClick={handleSaveEdit}>Save</button>
+            <button style={{backgroundColor:"wheat",width:'70px', borderRadius:"5px"}}onClick={handleCancelEdit}>Cancel</button>
+          </div>
+        ) : (
+          <div>
+            <p style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>ID: {submission.id}-</span> Name: {submission.name}</p>
+            <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Open: {submission.open ==='yes'? 'Yes' : 'No'}</p>
+            <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Due Date: {formatDate(submission.dueDate)}</p>
+            <p style={{ margin: '8px 0', color: '#333' }}>
+              Weightage: {submission.weightage}
+            </p>
+            {userRole === "coordinator" ? (
+              <button style={{backgroundColor:"wheat",width:'100px', borderRadius:"5px"}} onClick={() => handleEdit(submission.id)}>Edit</button>
             ) : (
-              <div>
-                <p style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>ID: {submission.id}-</span> Name: {submission.name}</p>
-                <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Open: {submission.open ==='yes'? 'Yes' : 'No'}</p>
-             <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Due Date: {formatDate(submission.dueDate)}</p>
-             <p style={{ margin: '8px 0', color: '#333' }}>
-                  Weightage: {submission.weightage}
-                </p>
-                {userRole === "coordinator" ? (
-                <button style={{backgroundColor:"wheat",width:'100px', borderRadius:"5px"}} onClick={() => handleEdit(submission.id)}>Edit</button>
-                ) : (
-                  null
-                )}
-                </div>
-              
+              null
             )}
-          </li>
-        ))}
-      </ul>
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+)}
+
     </div>
     
   );

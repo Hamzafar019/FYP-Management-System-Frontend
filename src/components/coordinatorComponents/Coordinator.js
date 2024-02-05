@@ -12,6 +12,7 @@ import CoordinatorCreateSubmission from "./CoordinatorCreateSubmission";
 import ViewSubmission from "../ViewSubmission";
 import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
+import ChangePassword from "../ChangePassword";
 const Coordinator = () => {
   return (    
     <>
@@ -29,6 +30,7 @@ const Coordinator = () => {
             <Route exact path="/coordinator/viewSubmission" element={<ViewSubmission />} />
             <Route exact path="/coordinator/scores" element={<Scores />} />
             <Route exact path="/coordinator/rejectedFYP" element={<Rejected_FYP />} />
+            <Route exact path="/changepassword" element={<ChangePassword />} />
             
             
             

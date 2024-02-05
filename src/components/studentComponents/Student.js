@@ -15,6 +15,7 @@ import ViewSubmission from "../ViewSubmission";
 import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import StudentMeetingDetails from "./StudentMeetingDetails";
+import ChangePassword from "../ChangePassword";
 
 const Student = () => {
   return (    
@@ -36,7 +37,7 @@ const Student = () => {
             <Route exact path="/student/scores" element={<Scores />} />
             <Route exact path="/student/rejectedFYP" element={<Rejected_FYP />} />
             <Route exact path="/student/meetingsdetails" element={<StudentMeetingDetails />} />
-            
+            <Route exact path="/changepassword" element={<ChangePassword />} />
 
             
 

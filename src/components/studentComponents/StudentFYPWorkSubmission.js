@@ -24,11 +24,17 @@ const StudentFYPWorkSubmission = () => {
           authToken: `${authToken}`
         }
       });
+      if (!response.ok) {
+        // Handle non-2xx responses
+        const errorData = await response.json();
+        setError(`Error ${errorData.error}`);
+        return;
+
+      }
       const data = await response.json();
       setGroupId(data[0].id);
     } catch (error) {
-        setError('Error fetching groupId:', error)
-      console.error('Error fetching groupId:', error);
+      setError(error.message);
     }
   };
 
@@ -110,7 +116,7 @@ const StudentFYPWorkSubmission = () => {
             />
         </label>
         <button type="submit" disabled={!selectedSubmissionId || !file}
-        style={{ cursor: (!selectedSubmissionId || !file) ? 'not-allowed' : 'pointer' }}>Submit</button>
+        style={{ cursor: (!selectedSubmissionId || !file ||!groupId) ? 'not-allowed' : 'pointer' }}>Submit</button>
 
         {worksubmit && (
           <div className="success-message">

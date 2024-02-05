@@ -26,7 +26,7 @@
   align-items: center;
 }
 
-.signup-button {
+.signout-button {
   background-color: transparent;
   color: white;
   border: none;
@@ -35,4 +35,18 @@
   margin-left: 20px;
 }
 
+.changepassword-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 20px;
+}
+
+
+#navbar-buttons{
+  display: flex;
+  flex-direction: row;
+}
 /* Add more styling as needed */

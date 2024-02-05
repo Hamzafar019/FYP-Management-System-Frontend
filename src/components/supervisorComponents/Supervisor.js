@@ -16,6 +16,7 @@ import ViewSubmission from "../ViewSubmission";
 import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import MeetingsDetails from "./MeetingsDetails";
+import ChangePassword from "../ChangePassword";
 
 const Supervisor = () => {
   return (
@@ -38,6 +39,7 @@ const Supervisor = () => {
             <Route exact path="/supervisor/rejectedFYP" element={<Rejected_FYP />} />
             <Route exact path="/supervisor/createmeetings" element={<SupervisorCreateMeeting />} />
             <Route exact path="/supervisor/meetingsdetails" element={<MeetingsDetails />} />
+            <Route exact path="/changepassword" element={<ChangePassword />} />
             
 
             

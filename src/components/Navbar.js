@@ -2,11 +2,17 @@
 import React from 'react';
 import '../CSS/Navbar.css';
 
-const Navbar = ({ onSignUpClick }) => {
+const Navbar = ({ onSignOutClick }) => {
   const handleSignUpClick = () => {
-    if (onSignUpClick) {
-      onSignUpClick();
+    if (onSignOutClick) {
+      onSignOutClick();
     }
+  };
+
+
+
+  const handleChangePassword = () => {
+    window.location.href = '/changepassword';
   };
 
   return (
@@ -15,10 +21,20 @@ const Navbar = ({ onSignUpClick }) => {
         <div className="navbar-logo">
           <span>Logo</span>
         </div>
+        
+        <div id="navbar-buttons"> 
+
         <div className="navbar-actions">
-          <button className="signup-button" onClick={handleSignUpClick}>
+          <button className="changepassword-button" onClick={handleChangePassword}>
+            ChangePassword
+          </button>
+        </div>
+        <div className="navbar-actions">
+          <button className="signout-button" onClick={handleSignUpClick}>
             Sign Out
           </button>
+        </div>
+        
         </div>
       </div>
     </nav>

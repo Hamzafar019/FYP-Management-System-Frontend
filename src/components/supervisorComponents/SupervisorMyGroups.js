@@ -33,7 +33,25 @@ const SupervisorMyGroups = () => {
     <>
 
       <div>
-        {registrations.map((registration) => (
+      <h2
+        style={{
+          marginTop: "20px",
+          marginLeft: "200px",
+          color: "black",
+          fontSize: "2rem",
+        }}
+      >
+        My Groups
+      </h2>
+      {registrations.length === 0 ? (
+  <p  style={{
+    marginTop: "20px",
+    marginLeft: "200px",
+    color: "black",
+    fontSize: "1.5rem",
+  }}>No Groups under your submission</p>
+) : (
+        registrations.map((registration) => (
           <div key={registration.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
           <h2 style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>Group ID: {registration.id}-</span> Title: {registration.title}</h2>
           <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Description: {registration.description}</p>
@@ -42,7 +60,7 @@ const SupervisorMyGroups = () => {
             {registration.student3 && <p style={{  margin: '8px 0 8px 0', color: '#333' }}>Student 3: {registration.student3}</p>}
       </div>
       
-        ))}
+        )))}
       </div>
     </>
   );
