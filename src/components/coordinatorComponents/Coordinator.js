@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}  from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './Coordinator.css';
 import CoordinatorHome from './CoordinatorHome';
@@ -13,10 +13,16 @@ import ViewSubmission from "../ViewSubmission";
 import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import ChangePassword from "../ChangePassword";
-const Coordinator = () => {
+import Navbar from "../Navbar";
+const Coordinator = ({onSignOutClick}) => {
+  
+  const [userRole, setUserRole] = useState(
+    localStorage.getItem("userRole") || null
+  );
   return (    
     <>
       <Router >
+      {userRole !== null && <Navbar onSignOutClick={onSignOutClick} />}
         <CoordinatorNavSidebar/>
         <div className="coordinator-content" style={{ marginTop: '110px' }}  >
           <Routes>

@@ -6,6 +6,7 @@
   left: 0;
   width: 100%;
   z-index: 1;
+  height:50px;
 }
 
 .navbar-container {
@@ -42,8 +43,11 @@
   cursor: pointer;
   font-size: 1rem;
   margin-left: 20px;
+  font-weight: normal;
 }
-
+.changepassword-button:hover {
+  background-color: blue;
+}
 
 #navbar-buttons{
   display: flex;

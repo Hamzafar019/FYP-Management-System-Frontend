@@ -102,7 +102,7 @@ const SupervisorAddRelevantData = () => {
 
   return (
     
-    <div className="login-form" style={{ height: '350px' }}>
+    <div className="login-form" style={{marginTop:"200px",marginLeft:"170px",height: '350px'}}>
       <h1>FYP relevant data</h1>
     <form onSubmit={handleSubmit}>
       {/* Group ID dropdown */}

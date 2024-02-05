@@ -49,7 +49,7 @@ const CoordinatorViewAnnouncements = () => {
   
       <div> 
         {announcements.length === 0 ? (
-          <p style={{marginTop:"20px",color:"wheat",fontSize:"2rem"}}>No announcements</p>
+          <p style={{marginTop:"20px",color:"black",fontSize:"2rem"}}>No announcements</p>
         ) : (
           
           announcements.map((announcement) => (

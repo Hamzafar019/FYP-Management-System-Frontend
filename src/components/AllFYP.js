@@ -34,7 +34,7 @@ const AllFYP = () => {
       <div>
 
       {all_FYP.length === 0 ? (
-          <p style={{marginTop:"20px",marginLeft:"200px",color:"wheat",fontSize:"2rem"}}>No FYP Idea</p>
+          <p style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>No FYP Idea</p>
         ) : (
 
         all_FYP.map((FYP) => (

@@ -1,5 +1,5 @@
 // src/components/Admin.js
-import React from 'react';
+import React, {useState}  from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminNavSidebar from './AdminNavSidebar';
 import AdminHome from './AdminHome';
@@ -7,11 +7,17 @@ import AdminRegistration from './AdminRegistration';
 import AdminChangePassword from './AdminChangePassword';
 import './Admin.css'; // Import the CSS file for custom styles
 import ChangePassword from '../ChangePassword';
+import Navbar from '../Navbar';
 
-const Admin = () => {
+const Admin = ({onSignOutClick}) => {
+  
+  const [userRole, setUserRole] = useState(
+    localStorage.getItem("userRole") || null
+  );
   return (
     <>
       <Router >
+      {userRole !== null && <Navbar onSignOutClick={onSignOutClick} />}
         <AdminNavSidebar/>
         <div className="admin-content">
           <Routes>

@@ -44,7 +44,7 @@ function CoordinatorCreateSubmission() {
   };
 
   return (
-    <div className="login-form" style={{marginTop:"200px",height:"280px"}}>
+    <div className="login-form"  style={{marginTop:"200px",marginLeft:"170px"}}>
     <form onSubmit={handleSubmit}>
       <div style={{marginTop:"15px"}}>
         <label htmlFor="name" >Name:</label>

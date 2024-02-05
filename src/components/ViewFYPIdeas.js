@@ -33,7 +33,7 @@ const ViewFYPIdeas = () => {
       <div>
 
       {FYP_ideas.length === 0 ? (
-          <p style={{marginTop:"20px",marginLeft:"200px",color:"wheat",fontSize:"2rem"}}>No FYP Suggestions</p>
+          <p style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>No FYP Suggestions</p>
         ) : (
 
       FYP_ideas.map((FYP_idea) => (

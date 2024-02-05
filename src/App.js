@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
-import Navbar from "./components/Navbar";
 import Coordinator from "./components/coordinatorComponents/Coordinator";
 import Supervisor from "./components/supervisorComponents/Supervisor";
 import Admin from "./components/adminComponents/Admin";
@@ -39,13 +38,13 @@ function App() {
   const renderComponentByRole = () => {
     switch (userRole) {
       case "student":
-        return <Student />;
+        return <Student onSignOutClick={handleSignOut}  />;
       case "coordinator":
-        return <Coordinator />;
+        return <Coordinator onSignOutClick={handleSignOut}  />;
       case "supervisor":
-        return <Supervisor />;
+        return <Supervisor onSignOutClick={handleSignOut} />;
       case "admin":
-        return <Admin />;
+        return <Admin  onSignOutClick={handleSignOut} />;
       default:
         return <LoginForm onLogin={handleLogin} />;
     }
@@ -53,8 +52,6 @@ function App() {
 
   return (
     <>
-      {userRole !== null && <Navbar onSignOutClick={handleSignOut} />}
-      {/* {<Navbar onSignUpClick={handleSignUp} />} */}
       {renderComponentByRole()}
     </>
   );

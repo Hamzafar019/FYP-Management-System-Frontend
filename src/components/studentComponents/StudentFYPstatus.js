@@ -21,7 +21,7 @@ const StudentFYPstatus = () => {
         if (!response.ok) {
           // Handle non-2xx responses
           const errorData = await response.json();
-          setError(`Error ${errorData.error}`);
+          setError(`${errorData.error}`);
           return;
 
         }

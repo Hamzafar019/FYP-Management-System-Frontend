@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}  from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './Student.css';
 import StudentHome from './StudentHome';
@@ -16,11 +16,18 @@ import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import StudentMeetingDetails from "./StudentMeetingDetails";
 import ChangePassword from "../ChangePassword";
+import Navbar from "../Navbar";
 
-const Student = () => {
+const Student = ({onSignOutClick}) => {
+  
+  const [userRole, setUserRole] = useState(
+    localStorage.getItem("userRole") || null
+  );
   return (    
     <>
       <Router >
+            
+      {userRole !== null && <Navbar onSignOutClick={onSignOutClick} />}
         <StudentNavSidebar/>
         <div className="student-content" style={{ marginTop: '110px' }}>
           <Routes>

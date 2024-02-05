@@ -70,7 +70,7 @@ const AdminRegistration = () => {
   };
 
   return (
-    <div className="admin-registration-form">
+    <div className="admin-registration-form"  style={{marginTop:"200px",marginLeft:"170px"}}>
       <h1>Registration Form</h1>
       <form>
         <label>Name:</label>

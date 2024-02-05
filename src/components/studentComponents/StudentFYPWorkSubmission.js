@@ -27,7 +27,7 @@ const StudentFYPWorkSubmission = () => {
       if (!response.ok) {
         // Handle non-2xx responses
         const errorData = await response.json();
-        setError(`Error ${errorData.error}`);
+        setError(`${errorData.error}`);
         return;
 
       }
@@ -82,7 +82,7 @@ const StudentFYPWorkSubmission = () => {
   };
 
   return (
-    <div className='login-form'>
+    <div className='login-form' style={{marginTop:"200px",marginLeft:"170px"}}>
       <h2>Submit Your Work</h2>
       <form onSubmit={handleSubmit}>
         <label>

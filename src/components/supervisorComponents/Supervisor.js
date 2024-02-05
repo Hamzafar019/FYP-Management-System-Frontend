@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './Supervisor.css';
 import SupervisorNavSidebar from "./SupervisorNavSidebar";
@@ -17,11 +17,19 @@ import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import MeetingsDetails from "./MeetingsDetails";
 import ChangePassword from "../ChangePassword";
+import Navbar from "../Navbar";
 
-const Supervisor = () => {
+const Supervisor = ({onSignOutClick}) => {
+
+    const [userRole, setUserRole] = useState(
+      localStorage.getItem("userRole") || null
+    );
+
   return (
     <>
       <Router>
+        
+      {userRole !== null && <Navbar onSignOutClick={onSignOutClick} />}
         <SupervisorNavSidebar/>
         <div className="supervisor-content" style={{ marginTop: '110px' }}>
           <Routes>

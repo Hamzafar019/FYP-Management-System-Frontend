@@ -96,7 +96,7 @@ const SupervisorCreateMeeting = () => {
   }, [groupId, date, time, error]);
 
   return (
-    <div className='login-form'>
+    <div className='login-form' style={{marginTop:"200px",marginLeft:"170px"}}>
       <h2>Create Meeting</h2>
       {error && <p style={{color:"red"}}>{error}</p>}
       <form onSubmit={handleSubmit}>

@@ -48,7 +48,7 @@ const SupervisorViewAnnouncements = () => {
 
       <div>
       {announcements.length === 0 ? (
-          <p style={{marginTop:"20px",color:"wheat",fontSize:"2rem"}}>No announcements</p>
+          <p style={{marginTop:"20px",color:"black",fontSize:"2rem"}}>No announcements</p>
         ) : (
         announcements.map((announcement) => (
           <div key={announcement.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>

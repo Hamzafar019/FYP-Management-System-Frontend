@@ -194,7 +194,7 @@ const SupervisorViewWork = () => {
          )}
        </>
      ) : (
-        <p style={{marginTop:"10px", color:"whitesmoke"}}>No group and submission selected!!!</p>
+        <p style={{marginTop:"10px", color:"black"}}>No group and submission selected!!!</p>
       )}
       
 
