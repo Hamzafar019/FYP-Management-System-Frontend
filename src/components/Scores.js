@@ -57,7 +57,8 @@ function Scores() {
               <p>Group ID: {group.groupId}</p>
               <p>Obtained Marks: {group.totalMarks} </p>
               <p>Total Marks: {totalWeightage}</p>
-              <p>Percentage: {(group.totalMarks * 100) / totalWeightage}%</p>
+              <p>Percentage: {((group.totalMarks * 100) / totalWeightage).toFixed(2)}%</p>
+
             </li>
           ))}
         </ul>

@@ -1,7 +1,8 @@
 // Navbar.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../CSS/Navbar.css';
 import { Link } from 'react-router-dom';
+import io from 'socket.io-client';
 
 const Navbar = ({ onSignOutClick }) => {
   const handleSignUpClick = () => {
@@ -10,8 +11,26 @@ const Navbar = ({ onSignOutClick }) => {
     }
   };
 
+  const [message, setMessage] = useState('s');
 
+  useEffect(() => {
+    
+  const socket = io('http://localhost:3001'); 
 
+    
+      // Listen for 'chat message' events from the server
+      socket.on('bothannouncement', (announcement) => {
+          setMessage(message => [...message, announcement]);
+
+      });
+
+      // Clean up the socket connection on component unmount
+      return () => {
+          socket.disconnect();
+      };
+
+      
+  }, []); 
 
   return (
     <nav className="navbar">
@@ -19,7 +38,7 @@ const Navbar = ({ onSignOutClick }) => {
         <div className="navbar-logo">
           <span>Logo</span>
         </div>
-        
+        <p>{message}</p>
         <div id="navbar-buttons"> 
 
         <div className="navbar-actions">

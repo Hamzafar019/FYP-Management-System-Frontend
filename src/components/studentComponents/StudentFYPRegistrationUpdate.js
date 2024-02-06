@@ -50,7 +50,7 @@ const StudentFYPRegistrationUpdate = () => {
   };
 
   return (
-    <div className='admin-registration-form'>
+    <div className='admin-registration-form' style={{marginTop:"200px",marginLeft:"170px"}}>
       <h2>FYP Updation Form</h2>
       <form>
         <label htmlFor="title">Title:</label>

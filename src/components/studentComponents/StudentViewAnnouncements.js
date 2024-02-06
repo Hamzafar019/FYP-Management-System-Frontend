@@ -21,9 +21,6 @@ const StudentViewAnnouncements = () => {
         //     authToken: `${authToken}`,
         //   },
         });
-
-        const data = await response.json();
-
         if (response.status === 404) {
           // If no announcements found, set announcements state to empty array
           setAnnouncements([]);

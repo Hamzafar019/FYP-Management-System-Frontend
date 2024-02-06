@@ -40,7 +40,7 @@ const StudentFYPstatus = () => {
   return (
     <div>
       {statusData ? (
-        <div>
+        <div >
           <h2>FYP Registration Status</h2>
           
           {statusData.map((project) => (

@@ -115,7 +115,7 @@ const StudentFYPWorkSubmission = () => {
                 }} 
             />
         </label>
-        <button type="submit" disabled={!selectedSubmissionId || !file}
+        <button type="submit" disabled={!selectedSubmissionId || !file ||!groupId}
         style={{ cursor: (!selectedSubmissionId || !file ||!groupId) ? 'not-allowed' : 'pointer' }}>Submit</button>
 
         {worksubmit && (

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './Supervisor.css';
 import SupervisorNavSidebar from "./SupervisorNavSidebar";
@@ -19,11 +19,40 @@ import MeetingsDetails from "./MeetingsDetails";
 import ChangePassword from "../ChangePassword";
 import Navbar from "../Navbar";
 
+import io from 'socket.io-client';
 const Supervisor = ({onSignOutClick}) => {
+  const [message, setMessage] = useState('s');
+
 
     const [userRole, setUserRole] = useState(
       localStorage.getItem("userRole") || null
     );
+    useEffect(() => {
+      // Connect to the Socket.IO server
+      const socket = io('http://localhost:3001'); // Adjust the server URL and port
+
+    setMessage("Q")
+      socket.on('connect', () => {
+        console.log('Connected to server');
+    });
+
+    socket.on('disconnect', () => {
+        console.log('Disconnected from server');
+    });
+
+
+      // Listen for 'chat message' events from the server
+      socket.on('bothannouncement', (msg) => {
+          // Update the messages state with the received message
+          setMessage( msg);
+      });
+
+      // Clean up the socket connection on component unmount
+      return () => {
+          socket.disconnect();
+      };
+  }, []); 
+
 
   return (
     <>

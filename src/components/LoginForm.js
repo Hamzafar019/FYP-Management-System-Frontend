@@ -11,6 +11,18 @@ const LoginForm = ({ onLogin }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setError('')
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setError('')
+  };
+
   const handleLogin = async () => {
     try {
       // Basic form validation
@@ -45,8 +57,12 @@ const LoginForm = ({ onLogin }) => {
       const data = await response.json();
       const userRole = data.role;
       const authToken = data.token;
+      const name = data.name;
+      const email2 = data.email;
       
       localStorage.setItem('authToken', authToken);
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email2);
       onLogin(userRole);
     } catch (error) {
       setError('Login failed. Please check your credentials.');
@@ -59,10 +75,10 @@ const LoginForm = ({ onLogin }) => {
       <h1>Login Form</h1>
       <form>
         <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="email" value={email} onChange={handleEmailChange} />
 
         <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" value={password} onChange={handlePasswordChange} />
 
         <button type="button" onClick={handleLogin}>
           Login

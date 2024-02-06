@@ -9,11 +9,14 @@ import ViewFYPIdeas from "../ViewFYPIdeas";
 import AllFYP from "../AllFYP";
 import CoordinatorViewNewFYPRegistrations from "./CoordinatorViewNewFYPRegistrations";
 import CoordinatorCreateSubmission from "./CoordinatorCreateSubmission";
+import CoordinatorReportGenerator from "./CoordinatorReportGenerator";
+
 import ViewSubmission from "../ViewSubmission";
 import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import ChangePassword from "../ChangePassword";
 import Navbar from "../Navbar";
+import CoordinatorAllGroups from "./CoordinatorAllGroups";
 const Coordinator = ({onSignOutClick}) => {
   
   const [userRole, setUserRole] = useState(
@@ -36,6 +39,8 @@ const Coordinator = ({onSignOutClick}) => {
             <Route exact path="/coordinator/viewSubmission" element={<ViewSubmission />} />
             <Route exact path="/coordinator/scores" element={<Scores />} />
             <Route exact path="/coordinator/rejectedFYP" element={<Rejected_FYP />} />
+            <Route exact path="/coordinator/allgroups" element={<CoordinatorAllGroups />} />
+            <Route exact path="/coordinator/report" element={<CoordinatorReportGenerator />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
             
             

@@ -10,8 +10,6 @@ const AllFYP = () => {
           let url = 'http://localhost:3001/all_FYP';
   
           const response = await fetch(url, {});
-          const data = await response.json();
-  
           if (response.status === 404) {
             // If no announcements found, set announcements state to empty array
             setall_FYP([]);
@@ -34,7 +32,7 @@ const AllFYP = () => {
       <div>
 
       {all_FYP.length === 0 ? (
-          <p style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>No FYP Idea</p>
+          <p style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>No FYP History</p>
         ) : (
 
         all_FYP.map((FYP) => (

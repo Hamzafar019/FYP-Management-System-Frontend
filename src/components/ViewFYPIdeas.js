@@ -10,7 +10,6 @@ const ViewFYPIdeas = () => {
         let url = 'http://localhost:3001/FYP_idea';
 
         const response = await fetch(url, {});
-        const data = await response.json();
 
         if (response.status === 404) {
           // If no announcements found, set announcements state to empty array
