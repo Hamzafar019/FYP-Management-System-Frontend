@@ -153,7 +153,7 @@ const CoordinatorViewNewFYPRegistrations = () => {
           <h2 style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>ID: {new_registration.id}-</span>{new_registration.title}</h2>
           <p style={{ margin: '8px 0 8px 0', color: '#333' }}>{new_registration.description}</p>
           {/* Add View Button */}
-          <button onClick={() => handleViewClick(new_registration)}>View</button>
+          <button onClick={() => handleViewClick(new_registration)} style={{width:"75px",color:"black",height:"25px",backgroundColor:"wheat",borderRadius:"5px"}}>View</button>
         </div>
       ))}
       

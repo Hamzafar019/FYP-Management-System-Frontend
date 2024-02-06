@@ -9,6 +9,7 @@ import StudentFYPRegistration from "./StudentFYPRegistration";
 import StudentFYPRegistrationUpdate from "./StudentFYPRegistrationUpdate";
 import AllFYP from "../AllFYP";
 import StudentFYPstatus from "./StudentFYPstatus";
+import StudentViewWork from "./StudentViewWork";
 import FYP_related_videos from "../FYP_related_videos";
 import StudentFYPWorkSubmission from "./StudentFYPWorkSubmission";
 import ViewSubmission from "../ViewSubmission";
@@ -44,6 +45,7 @@ const Student = ({onSignOutClick}) => {
             <Route exact path="/student/scores" element={<Scores />} />
             <Route exact path="/student/rejectedFYP" element={<Rejected_FYP />} />
             <Route exact path="/student/meetingsdetails" element={<StudentMeetingDetails />} />
+            <Route exact path="/student/viewwork" element={<StudentViewWork />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
 
             

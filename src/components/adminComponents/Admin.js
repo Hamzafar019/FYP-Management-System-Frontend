@@ -19,7 +19,7 @@ const Admin = ({onSignOutClick}) => {
       <Router >
       {userRole !== null && <Navbar onSignOutClick={onSignOutClick} />}
         <AdminNavSidebar/>
-        <div className="admin-content">
+        <div className="admin-content"  style={{ marginTop: '110px' }}>
           <Routes>
             <Route exact path="/admin/" element={<AdminHome />} />
             <Route exact path="/admin/registration" element={<AdminRegistration />} />

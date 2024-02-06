@@ -44,7 +44,7 @@ const SupervisorNavSidebar = () => {
             <ul className="additional-items">
               <Link to="/supervisor/scores">- Scores</Link>
               <Link to="/supervisor/addFYPideas">- New FYP Ideas</Link>
-              <Link to="/supervisor/viewFYPideas">- View FYP Ideas</Link>
+              <Link to="/supervisor/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/supervisor/viewallFYP">- View all FYPs</Link>
               <Link to="/supervisor/rejectedFYP">- Rejected FYP</Link>
               {/* <li>- Item B</li>

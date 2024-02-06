@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const SupervisorViewWork = () => {
+const StudentViewWork = () => {
   const [submissionIds, setSubmissionIds] = useState([]);
-  const [groupIds, setGroupIds] = useState([]);
   const [selectedSubmissionId, setSelectedSubmissionId] = useState('');
   const [selectedGroupId, setSelectedGroupId] = useState('');
   const [supervisorMarks, setSupervisorMarks] = useState('');
@@ -23,6 +22,8 @@ const SupervisorViewWork = () => {
     URL.revokeObjectURL(blobUrl);
   };
   useEffect(() => {
+
+    
     // Fetch submission IDs
     fetch('http://localhost:3001/submission/viewall')
       .then(response => response.json())
@@ -39,20 +40,23 @@ const SupervisorViewWork = () => {
       });
 
     // Fetch group IDs
-    fetch('http://localhost:3001/groups/mygroups', {
-      headers: {
-        authToken: `${localStorage.getItem('authToken')}`
-      }
-    })
+      // Fetch groups from the server
+      fetch('http://localhost:3001/FYPregistration/status', {
+        headers: {
+          'authToken': `${localStorage.getItem('authToken')}`
+        }
+      })
       .then(response => response.json())
       .then(data => {
-        setGroupIds(data);
+        // Check if data exists
+        if (data && data.length > 0) {
+            setSelectedGroupId(data[0].id); // Set group data
+        } else {
+            setSelectedGroupId([]); // Set empty array if no data
+        }
       })
-      .catch(error => {
-        
-        console.error('Error fetching group IDs:', error);
-        setError('Error fetching group IDs');
-      });
+      .catch(error => console.error('Error fetching groups:', error));
+  
   }, []);
 
   useEffect(() => {
@@ -91,9 +95,6 @@ const SupervisorViewWork = () => {
     setSelectedSubmissionId(event.target.value);
   };
 
-  const handleGroupChange = event => {
-    setSelectedGroupId(event.target.value);
-  };
 
   function arrayBufferToBase64(buffer) {
     let binary = '';
@@ -119,7 +120,6 @@ const SupervisorViewWork = () => {
     const confirmation = window.confirm(`Are you sure you want to update marks to ${selectedMarks}?`);
     if (confirmation) {
       
-      
       fetch(`http://localhost:3001/groupsubmission/updatesupervisormarks?submissionId=${selectedSubmissionId}&groupId=${selectedGroupId}`, {
         method: 'PUT',
         headers: {
@@ -134,7 +134,6 @@ const SupervisorViewWork = () => {
         .then(response => {
           if (response.ok) {
             setUpdateMessage('Marks updated successfully');
-            setSupervisorMarks(selectedMarks)
             setTimeout(() => {
               setUpdateMessage('');
             }, 3000);
@@ -163,15 +162,6 @@ const SupervisorViewWork = () => {
         ))}
       </select>
 
-      {/* Group ID dropdown */}
-      <select value={selectedGroupId} onChange={handleGroupChange}>
-        <option value="">Select Group ID</option>
-        {groupIds.map(groupId => (
-          <option key={groupId.id} value={groupId.id}>
-            {groupId.id}
-          </option>
-        ))}
-      </select>
 
       {selectedGroupId && selectedSubmissionId ? (
          <>
@@ -184,19 +174,13 @@ const SupervisorViewWork = () => {
              ) : (
                <p style={{ color: "yellowgreen" }}>Graded!!! Marks of Submission Id: {selectedSubmissionId}  Group Id: {selectedGroupId}: {supervisorMarks}</p>
              )}
-               <select value={selectedMarks} onChange={e => setSelectedMarks(e.target.value)}>
-          <option value="">Select Marks</option>
-          {Array.from({ length: 100 }, (_, index) => index + 1).map(mark => (
-            <option key={mark} value={mark}>{mark}</option>
-          ))}
-        </select>
-        <button style={{cursor:"pointer"}}onClick={handleUpdateMarks}>Update Marks</button>
+             
         {updateMessage && <p style={{ color: updateMessage.includes('updated') ? 'green' : 'red' }}>{updateMessage}</p>}
            </>
          )}
        </>
      ) : (
-        <p style={{marginTop:"10px", color:"black"}}>No group and submission selected!!!</p>
+        <p style={{marginTop:"10px", color:"black"}}>No submission id selected!!!</p>
       )}
       
 
@@ -269,4 +253,4 @@ const SupervisorViewWork = () => {
   );
 };
 
-export default SupervisorViewWork;
+export default StudentViewWork;

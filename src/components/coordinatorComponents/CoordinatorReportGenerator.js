@@ -151,8 +151,11 @@ const CoordinatorReportGenerator = () => {
         
       </div>
 
-      {result.length=== 0 &&(
-        <p>Student haven't registered</p>
+      {result.length=== 0 && !studentEmail && (
+        <p>Please select any one Name</p>
+      )}
+      {result.length=== 0  && studentEmail && (
+        <p>Selected Student haven't registered</p>
       )}
       {result.length!== 0 && (<>
         <div

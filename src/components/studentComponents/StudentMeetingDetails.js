@@ -118,7 +118,7 @@ function StudentMeetingDetails() {
         ) : (
         filteredMeetings.map(meeting => (
           <li key={meeting.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-              <p style={{ fontSize: '16px', color: 'black' }}>Date Time: {formatDateTime(meeting.dateTime)}</p>
+              <p style={{ fontSize: '16px', color: 'black' }}>Date Time:   {new Date(meeting.dateTime).toISOString().split('T')[0]} </p>
             <p style={{ fontSize: '16px', color: 'black' }}>Meeting Done: {meeting.done}</p>
            
 

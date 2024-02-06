@@ -33,16 +33,18 @@ const SupervisorFYPNewIdea = () => {
     })
       .then((response) => {
         if (!response.ok) {
+          return response.json().then(errorData => {
+            throw new Error(`${errorData.error}`);
+          });
           
-          throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
       })
       .then((data) => {
-        setRegistrationData('FYP idea posted successfully:', data)
+        setRegistrationData('FYP idea posted successfully', data)
       })
       .catch((error) => {
-        setError('Error posting FYP idea')
+        setError(`${error.message}`||'Error posting FYP idea')
       });
   };
 

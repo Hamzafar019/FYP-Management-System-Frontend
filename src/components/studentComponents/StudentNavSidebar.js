@@ -74,7 +74,10 @@ const StudentNavSidebar = () => {
             <Link to="/student/viewFYPsubmissions">- FYP Submissions</Link>  
               <Link to="/student/viewvideos">- View Videos</Link>  
               <Link to="/student/submitwork">- Submit Work</Link>  
+              <Link to="/student/viewwork">- View Work</Link>  
               <Link to="/student/meetingsdetails">- Meetings Details</Link>  
+
+              
             </ul>
           )}
         </li> 
