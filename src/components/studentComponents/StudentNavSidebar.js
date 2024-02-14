@@ -49,6 +49,7 @@ const StudentNavSidebar = () => {
               <Link to="/student/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/student/viewallFYP">- View all FYPs</Link>
               <Link to="/student/rejectedFYP">- Rejected FYPs</Link>
+              <Link to="/industryprojects">- Industry Projects</Link>
 
               
               {/* <li>- Item B</li>

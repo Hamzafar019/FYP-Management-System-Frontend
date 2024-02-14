@@ -13,7 +13,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 500px;
-    height: 300px;
+    height: 350px;
   }
   
   .login-form h1 {
@@ -46,6 +46,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
   }
+  
   
   .login-form button:hover {
     background-color: #0056b3;

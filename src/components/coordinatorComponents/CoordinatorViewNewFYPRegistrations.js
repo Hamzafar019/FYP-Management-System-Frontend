@@ -157,7 +157,7 @@ const CoordinatorViewNewFYPRegistrations = () => {
         </div>
       ))}
       
-    <p>{updation}</p>
+    <p style={{marginTop:"10px",marginLeft:"200px"}}>{updation}</p>
       {selectedFYP && (
         <FYPWideView FYP={selectedFYP} onViewChange={handleWideViewChange} />
       )}
@@ -165,7 +165,7 @@ const CoordinatorViewNewFYPRegistrations = () => {
     )
     : (
       <>
-      <p>{updation}</p>
+      <p style={{marginTop:"10px",marginLeft:"200px"}}>{updation}</p>
       <p style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>No New Project Registration</p>
       </>
   )}

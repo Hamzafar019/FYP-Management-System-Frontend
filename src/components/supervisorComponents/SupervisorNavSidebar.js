@@ -49,6 +49,8 @@ const SupervisorNavSidebar = () => {
               <Link to="/supervisor/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/supervisor/viewallFYP">- View all FYPs</Link>
               <Link to="/supervisor/rejectedFYP">- Rejected FYP</Link>
+              <Link to="/industryprojects">- Industry Projects</Link>
+             
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>
@@ -64,7 +66,8 @@ const SupervisorNavSidebar = () => {
               <Link to="/supervisor/mygroups">- My Groups </Link>
               <Link to="/supervisor/createmeetings">- Create Meetings </Link>
               <Link to="/supervisor/meetingsdetails">- Meetings Details </Link>
-              
+              <Link to="/supervisor/domainvideos">- Add Domain Videos </Link>
+              <Link to="/supervisor/viewdomainvideos">- View Domain Videos </Link>
               <Link to="/supervisor/addvideos">- Add Videos </Link>
               <Link to="/supervisor/viewvideos">- View Videos </Link>
               <Link to="/supervisor/viewwork">- View Work </Link>

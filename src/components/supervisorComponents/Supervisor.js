@@ -18,8 +18,12 @@ import Rejected_FYP from "../Rejected_FYP";
 import MeetingsDetails from "./MeetingsDetails";
 import ChangePassword from "../ChangePassword";
 import Navbar from "../Navbar";
+import IndustryProjectsView from "../IndustryProjectsView";
+
 
 import io from 'socket.io-client';
+import SupervisorDomainVideos from "./SupervisorDomainVideos";
+import ViewDomainVideos from "../ViewDomainVideos";
 const Supervisor = ({onSignOutClick}) => {
   const [message, setMessage] = useState('s');
 
@@ -77,6 +81,9 @@ const Supervisor = ({onSignOutClick}) => {
             <Route exact path="/supervisor/createmeetings" element={<SupervisorCreateMeeting />} />
             <Route exact path="/supervisor/meetingsdetails" element={<MeetingsDetails />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
+            <Route exact path="/supervisor/domainvideos" element={<SupervisorDomainVideos />} />
+            <Route exact path="/supervisor/viewdomainvideos" element={<ViewDomainVideos />} />
+            <Route exact path="/industryprojects" element={<IndustryProjectsView />} />
             
 
             

@@ -17,6 +17,7 @@ import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import StudentMeetingDetails from "./StudentMeetingDetails";
 import ChangePassword from "../ChangePassword";
+import IndustryProjectsView from "../IndustryProjectsView";
 import Navbar from "../Navbar";
 
 const Student = ({onSignOutClick}) => {
@@ -47,6 +48,7 @@ const Student = ({onSignOutClick}) => {
             <Route exact path="/student/meetingsdetails" element={<StudentMeetingDetails />} />
             <Route exact path="/student/viewwork" element={<StudentViewWork />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
+            <Route exact path="/industryprojects" element={<IndustryProjectsView />} />
 
             
 

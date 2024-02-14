@@ -48,6 +48,7 @@ const CoordinatorNavSidebar = () => {
               <Link to="/coordinator/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/coordinator/viewallFYP">- View all FYPs</Link>
               <Link to="/coordinator/rejectedFYP">- Rejected FYPs</Link>
+              <Link to="/industryprojects">- Industry Projects</Link>
               {/* <li>- Item B</li>
               <li>- Item C</li> */}
             </ul>
@@ -65,6 +66,8 @@ const CoordinatorNavSidebar = () => {
               <Link to="/coordinator/newRegistrations">- New Registrations</Link>
               <Link to="/coordinator/allgroups">- View All Groups</Link>
               <Link to="/coordinator/report">- Create Report</Link>
+              <Link to="/coordinator/newDomain">- New Video Domain</Link>
+              <Link to="/coordinator/viewDomain">- View Domains</Link>
             </ul>
           )}
         </li>

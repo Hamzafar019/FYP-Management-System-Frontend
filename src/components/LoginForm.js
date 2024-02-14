@@ -1,26 +1,28 @@
-// src/components/LoginForm.js
-
-// import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import '../CSS/LoginForm.css'; 
-// import {useNavigate} from 'react-router-dom'
-// ... (your imports and component definition)
+import '../CSS/LoginForm.css';
 
 const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setError('')
+    setError('');
   };
+
+  const onIndustryProjectClick=()=>{
+    const industryProjectLink = document.createElement('a');
+    industryProjectLink.href = '/industry-project';
+    industryProjectLink.target = '_blank';
+    industryProjectLink.rel = 'noopener noreferrer';
+    industryProjectLink.click();
+
+  }
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setError('')
+    setError('');
   };
 
   const handleLogin = async () => {
@@ -80,8 +82,13 @@ const LoginForm = ({ onLogin }) => {
         <label>Password:</label>
         <input type="password" value={password} onChange={handlePasswordChange} />
 
-        <button type="button" onClick={handleLogin}>
+        <button type="button" onClick={handleLogin} style={{marginBottom:"15px"}} >
           Login
+        </button>
+
+        {/* Use the onIndustryProjectClick function when the button is clicked */}
+        <button type="button" onClick={onIndustryProjectClick}>
+          Industry Project
         </button>
 
         {error && <p className="error-message">{error}</p>}

@@ -15,8 +15,13 @@ import ViewSubmission from "../ViewSubmission";
 import Scores from "../Scores";
 import Rejected_FYP from "../Rejected_FYP";
 import ChangePassword from "../ChangePassword";
+import IndustryProjectsView from "../IndustryProjectsView";
+
+
 import Navbar from "../Navbar";
 import CoordinatorAllGroups from "./CoordinatorAllGroups";
+import CoordinatorDomains from "./CoordinatorDomains";
+import CoordinatorViewDomians from "./CoordinatorViewDomians";
 const Coordinator = ({onSignOutClick}) => {
   
   const [userRole, setUserRole] = useState(
@@ -42,6 +47,9 @@ const Coordinator = ({onSignOutClick}) => {
             <Route exact path="/coordinator/allgroups" element={<CoordinatorAllGroups />} />
             <Route exact path="/coordinator/report" element={<CoordinatorReportGenerator />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
+            <Route exact path="/industryprojects" element={<IndustryProjectsView />} />
+            <Route exact path="/coordinator/newDomain" element={<CoordinatorDomains />} />
+            <Route exact path="/coordinator/viewDomain" element={<CoordinatorViewDomians />} />
             
             
             
