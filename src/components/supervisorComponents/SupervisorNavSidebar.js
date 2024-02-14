@@ -24,7 +24,10 @@ const SupervisorNavSidebar = () => {
         <li>
           <Link to="/supervisor">Home</Link>
         </li>
-
+<li>
+  
+<Link to="/supervisor/guidelines">Guidelines</Link>
+</li>
         <li>
           <button onClick={() => toggleAdditionalItems('Announcement')}>
           Announcements
@@ -42,7 +45,6 @@ const SupervisorNavSidebar = () => {
           </button>
           {showAdditionalItems.FYP_Suggestions_All_FYPS && (
             <ul className="additional-items">
-              <Link to="/supervisor/scores">- Scores</Link>
               <Link to="/supervisor/addFYPideas">- New FYP Ideas</Link>
               <Link to="/supervisor/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/supervisor/viewallFYP">- View all FYPs</Link>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function Scores() {
-  const [marksData, setMarksData] = useState([]); // Initialize marksData as an empty array
+  const [marksData, setMarksData] = useState([]);
   const [error, setError] = useState(null);
   const [totalWeightage, setTotalWeightage] = useState(null);
 
@@ -20,7 +20,7 @@ function Scores() {
       const data = await response.json();
       setMarksData(data.groupTotalsArray);
       setTotalWeightage(data.totalWeightage);
-      setError(null); // Clear any previous error
+      setError(null);
     } catch (error) {
       console.error("Error fetching marks data:", error);
       setError("Failed to fetch marks data. Please try again later.");
@@ -28,11 +28,11 @@ function Scores() {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor:"wheat",padding:"10px",borderRadius:"10px",border:"7px solid black"}}>
       <h2
         style={{
           marginTop: "20px",
-          marginLeft: "200px",
+          marginLeft: "250px",
           color: "black",
           fontSize: "2rem",
         }}
@@ -49,26 +49,79 @@ function Scores() {
                 border: "1px solid #ccc",
                 borderRadius: "8px",
                 padding: "7px",
+                backgroundColor:"black",
                 marginBottom: "16px",
                 marginTop: "16px",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
-              <p>Group ID: {group.groupId}</p>
-              <p>Obtained Marks: {group.totalMarks} </p>
-              <p>Total Marks: {totalWeightage}</p>
-              <p>Percentage: {((group.totalMarks * 100) / totalWeightage).toFixed(2)}%</p>
 
+              
+              <div style={{ display: "flex", alignItems: "center" }}>
+                
+                <div>
+                  <p>Group ID: {group.groupId}</p>
+                  <p>Obtained Marks: {group.totalMarks}</p>
+                  <p>Total Marks: {totalWeightage}</p>
+                  <p>
+                    Percentage:{" "}
+                    {((group.totalMarks * 100) / totalWeightage).toFixed(2)}%
+                  </p>
+                </div>
+
+
+
+              </div>
+              
+
+
+              {index < 3 && (
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "50%",
+                      backgroundColor:
+                        index === 0
+                          ? "gold"
+                          : index === 1
+                          ? "silver"
+                          : "brown",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: "10px",
+                      right:"2px",
+                      fontWeight: "bold",
+                      color: "white",
+                    }}
+                  >
+                    {index === 0
+                      ? "1st"
+                      : index === 1
+                      ? "2nd"
+                      : index === 2
+                      ? "3rd"
+                      : ""}
+                  </div>
+                )}
             </li>
           ))}
         </ul>
       ) : (
-        <p style={{
-          marginTop: "20px",
-          marginLeft: "200px",
-          color: "black",
-          fontSize: "1.5rem",
-        }}>No records</p>
+        <p
+          style={{
+            marginTop: "20px",
+            marginLeft: "200px",
+            color: "black",
+            fontSize: "1.5rem",
+          }}
+        >
+          No records
+        </p>
       )}
     </div>
   );

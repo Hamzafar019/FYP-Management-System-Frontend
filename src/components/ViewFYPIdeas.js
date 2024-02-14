@@ -34,14 +34,17 @@ const ViewFYPIdeas = () => {
       {FYP_ideas.length === 0 ? (
           <p style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>No FYP Suggestions</p>
         ) : (
-
-      FYP_ideas.map((FYP_idea) => (
+          <>
+          <p style={{marginTop:"20px",marginLeft:"200px",color:"black",fontSize:"2rem"}}>Supervisors Suggestions</p>
+      {FYP_ideas.map((FYP_idea) => (
           <div key={FYP_idea.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '7px', marginBottom: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
             <h2 style={{ margin: '0', color: 'black' }}><span style={{ fontSize: '12px', color: 'black' }}>ID: {FYP_idea.id}-</span> {FYP_idea.title}</h2>
             <p style={{ margin: '8px 0 8px 0', color: '#111' }}>{FYP_idea.description}</p>
             <p style={{ margin: '8px 0 8px 0', color: '#333' }}>Availability: {FYP_idea.availability}</p>
           </div>
-        )))}
+        ))}
+        
+        </>)}
       </div>
     </>
   );

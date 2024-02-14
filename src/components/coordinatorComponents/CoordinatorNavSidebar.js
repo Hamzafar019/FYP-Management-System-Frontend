@@ -24,7 +24,10 @@ const CoordinatorNavSidebar = () => {
         <li>
           <Link to="/coordinator">Home</Link>
         </li>
+        <li>
 
+        <Link to="/coordinator/guidelines">Guidelines</Link>
+        </li>
         <li>
           <button onClick={() => toggleAdditionalItems('Announcement')}>
           Announcements
@@ -42,7 +45,6 @@ const CoordinatorNavSidebar = () => {
           </button>
           {showAdditionalItems.FYP_Suggestions_All_FYPS && (
             <ul className="additional-items">
-              <Link to="/coordinator/scores">- Scores</Link>
               <Link to="/coordinator/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/coordinator/viewallFYP">- View all FYPs</Link>
               <Link to="/coordinator/rejectedFYP">- Rejected FYPs</Link>

@@ -20,8 +20,8 @@ const Navbar = ({ onSignOutClick }) => {
       .then(response => response.json())
       .then(data => {
         setNotifications(data);
-        const unseen = data.filter(notification => notification.view === 'no');
-        const viewed = data.filter(notification => notification.view === 'yes');
+        const unseen = data.filter(notification => notification.view === 'no').reverse();
+        const viewed = data.filter(notification => notification.view === 'yes').reverse();
         setUnseenNotifications(unseen);
         setViewedNotifications(viewed);
       })
@@ -41,9 +41,14 @@ const Navbar = ({ onSignOutClick }) => {
   const handleNotificationClick = (id, view) => {
     // Decrement notification count
     if (view === 'no') {
+      const viewedNotification = unseenNotifications.find(notification => notification.id === id);
+      if (viewedNotification) {
+        setViewedNotifications([viewedNotification, ...viewedNotifications]);
+    }
+    
       setUnseenNotifications(unseenNotifications.filter(notification => notification.id !== id));
     } else {
-      setViewedNotifications(viewedNotifications.filter(notification => notification.id !== id));
+      // setViewedNotifications(viewedNotifications.filter(notification => notification.id !== id));
     }
     // Send PUT request to update notification status
     fetch(`http://localhost:3001/notifications?id=${id}`, {
@@ -78,34 +83,43 @@ const Navbar = ({ onSignOutClick }) => {
                 <span className="notification-badge">{unseenNotifications.length }</span>
               )}
             </button>
+
+
+
+
             {showNotifications && (
-              <div className="notifications-dropdown">
-                {/* Display unseen notifications */}
-                <p style={{textAlign:"center",color:"black",fontWeight:"bold",marginBottom:"10px"}}>New</p>
-                {unseenNotifications.map(notification => (
-                  <Link
-                    key={notification.id}
-                    to={notification.route}
-                    className="notification-item unseen"
-                    onClick={() => handleNotificationClick(notification.id, 'no')}
-                  >
-                    {notification.text} <br></br> Date&Time: {new Date(notification.createdAt).toLocaleString()} 
-                  </Link>
-                ))}
-                <p style={{textAlign:"center",color:"black",fontWeight:"bold",marginBottom:"10px"}}>Earlier</p>
-                {/* Display viewed notifications */}
-                {viewedNotifications.map(notification => (
-                  <Link
-                    key={notification.id}
-                    to={notification.route}
-                    className="notification-item viewed"
-                    onClick={() => handleNotificationClick(notification.id, 'yes')}
-                  >
-                    {notification.text} <br></br> Date&Time: {new Date(notification.createdAt).toLocaleString()} 
-                  </Link>
-                ))}
-              </div>
-            )}
+  <div className="notifications-dropdown" style={{ maxHeight: "700px", overflowY: "auto" }}>
+    {/* Display unseen notifications */}
+    <p style={{textAlign:"center",color:"black",fontWeight:"bold",marginBottom:"10px"}}>New</p>
+    {unseenNotifications.map(notification => (
+      <Link
+        key={notification.id}
+        to={notification.route}
+        className="notification-item unseen"
+        onClick={() => handleNotificationClick(notification.id, 'no')}
+      >
+        {notification.text} <br></br> Date&Time: {new Date(notification.createdAt).toLocaleString()} 
+      </Link>
+    ))}
+    <p style={{textAlign:"center",color:"black",fontWeight:"bold",marginBottom:"10px"}}>Earlier</p>
+    {/* Display viewed notifications */}
+    {viewedNotifications.map(notification => (
+      <Link
+        key={notification.id}
+        to={notification.route}
+        className="notification-item viewed"
+        onClick={() => handleNotificationClick(notification.id, 'yes')}
+      >
+        {notification.text} <br></br> Date&Time: {new Date(notification.createdAt).toLocaleString()} 
+      </Link>
+    ))}
+  </div>
+)}
+
+
+
+
+
           </div>
           <div className="navbar-actions">
             <Link to="/changepassword" className="changepassword-button">

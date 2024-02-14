@@ -25,6 +25,9 @@ const StudentNavSidebar = () => {
         <li>
           <Link to="/student">Home</Link>
         </li>
+        <li>
+            <Link to="/student/guidelines">Guidelines</Link>
+        </li>
 
         <li>
           <button onClick={() => toggleAdditionalItems('Announcement')}>
@@ -43,7 +46,6 @@ const StudentNavSidebar = () => {
           </button>
           {showAdditionalItems.FYP_Suggestions && (
             <ul className="additional-items">
-            <Link to="/student/scores">- Scores</Link>
               <Link to="/student/viewFYPideas">- View FYP Suggestions</Link>
               <Link to="/student/viewallFYP">- View all FYPs</Link>
               <Link to="/student/rejectedFYP">- Rejected FYPs</Link>

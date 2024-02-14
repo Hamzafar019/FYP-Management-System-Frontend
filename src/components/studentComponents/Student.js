@@ -32,7 +32,7 @@ const Student = ({onSignOutClick}) => {
         <StudentNavSidebar/>
         <div className="student-content" style={{ marginTop: '110px' }}>
           <Routes>
-            <Route exact path="/student/" element={<StudentHome />} />
+            <Route exact path="/student/" element={<Scores />} />
             <Route exact path="/student/viewannouncements" element={<StudentViewAnnouncements />} />
             <Route exact path="/student/viewFYPideas" element={<ViewFYPIdeas />} />
             <Route exact path="/student/FYPregistrations" element={<StudentFYPRegistration />} />
@@ -42,7 +42,7 @@ const Student = ({onSignOutClick}) => {
             <Route exact path="/student/viewvideos" element={<FYP_related_videos />} />
             <Route exact path="/student/submitwork" element={<StudentFYPWorkSubmission />} />
             <Route exact path="/student/viewFYPsubmissions" element={<ViewSubmission />} />
-            <Route exact path="/student/scores" element={<Scores />} />
+            <Route exact path="/student/guidelines" element={<StudentHome />} />
             <Route exact path="/student/rejectedFYP" element={<Rejected_FYP />} />
             <Route exact path="/student/meetingsdetails" element={<StudentMeetingDetails />} />
             <Route exact path="/student/viewwork" element={<StudentViewWork />} />

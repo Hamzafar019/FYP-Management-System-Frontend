@@ -62,7 +62,7 @@ const Supervisor = ({onSignOutClick}) => {
         <SupervisorNavSidebar/>
         <div className="supervisor-content" style={{ marginTop: '110px' }}>
           <Routes>
-            <Route exact path='/supervisor/'element={<SupervisorHome/>}/>
+            <Route exact path='/supervisor/'element={<Scores/>}/>
             <Route exact path="/supervisor/viewannouncements" element={<SupervisorViewAnnouncements />} />
             <Route exact path="/supervisor/addFYPideas" element={<SupervisorFYPNewIdea/>} />
             <Route exact path="/supervisor/viewallFYP" element={<AllFYP />} />
@@ -72,7 +72,7 @@ const Supervisor = ({onSignOutClick}) => {
             <Route exact path="/supervisor/viewvideos" element={<FYP_related_videos />} />
             <Route exact path="/supervisor/viewwork" element={<SupervisorViewWork />} />
             <Route exact path="/supervisor/viewFYPsubmissions" element={<ViewSubmission />} />
-            <Route exact path="/supervisor/scores" element={<Scores />} />
+            <Route exact path="/supervisor/guidelines" element={<SupervisorHome />} />
             <Route exact path="/supervisor/rejectedFYP" element={<Rejected_FYP />} />
             <Route exact path="/supervisor/createmeetings" element={<SupervisorCreateMeeting />} />
             <Route exact path="/supervisor/meetingsdetails" element={<MeetingsDetails />} />

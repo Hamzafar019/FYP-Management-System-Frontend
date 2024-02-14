@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 const SupervisorViewWork = () => {
-  const [submissionIds, setSubmissionIds] = useState([]);
+  const [submissions, setSubmissions] = useState([]);
   const [groupIds, setGroupIds] = useState([]);
   const [selectedSubmissionId, setSelectedSubmissionId] = useState('');
+  const [selectedSubmissionWeightage, setSelectedSubmissionWeightage] = useState('');
   const [selectedGroupId, setSelectedGroupId] = useState('');
   const [supervisorMarks, setSupervisorMarks] = useState('');
   const [updateMessage, setUpdateMessage] = useState('');
@@ -28,10 +29,13 @@ const SupervisorViewWork = () => {
       .then(response => response.json())
       .then(data => {
         
-      const submissionIds = data.map(submission => submission.id);
+      const submissions = data.map(submission => ({
+        id: submission.id,
+        weightage: submission.weightage
+      }));
 
       // Now set the submissionIds to your state variable or wherever you want to store it
-      setSubmissionIds(submissionIds);
+      setSubmissions(submissions);
       })
       .catch(error => {
         console.error('Error fetching submission IDs:', error);
@@ -112,7 +116,7 @@ const SupervisorViewWork = () => {
 
   const handleUpdateMarks = () => {
     if (!selectedMarks || selectedMarks < 1 || selectedMarks > 100) {
-      alert('Please select marks between 1 and 100');
+      alert('Please select marks');
       return;
     }
 
@@ -154,11 +158,20 @@ const SupervisorViewWork = () => {
   return (
     <div>
       {/* Submission ID dropdown */}
-      <select value={selectedSubmissionId}  onChange={(e) => setSelectedSubmissionId(e.target.value)}>
+      <select value={selectedSubmissionId}  onChange={(e) =>{ 
+         const selectedId = e.target.value;
+         setSelectedSubmissionId(selectedId);
+       const selectedSubmission = submissions.find(submission => submission.id === parseInt(selectedId));
+   
+       // Set the weightage of the selected submission
+       setSelectedSubmissionWeightage(selectedSubmission ? selectedSubmission.weightage : '');
+    
+
+  }}>
         <option value="">Select Submission ID</option>
-        {submissionIds.map(submissionId => (
-          <option key={submissionId} value={submissionId}>
-            {submissionId}
+        {submissions.map(submissionId => (
+          <option key={submissionId.id} value={submissionId.id}>
+            {submissionId.id}
           </option>
         ))}
       </select>
@@ -185,8 +198,8 @@ const SupervisorViewWork = () => {
                <p style={{ color: "yellowgreen" }}>Graded!!! Marks of Submission Id: {selectedSubmissionId}  Group Id: {selectedGroupId}: {supervisorMarks}</p>
              )}
                <select value={selectedMarks} onChange={e => setSelectedMarks(e.target.value)}>
-          <option value="">Select Marks</option>
-          {Array.from({ length: 100 }, (_, index) => index + 1).map(mark => (
+          <option value="">Select Marks  </option>
+          {Array.from({ length: selectedSubmissionWeightage }, (_, index) => index + 1).map(mark => (
             <option key={mark} value={mark}>{mark}</option>
           ))}
         </select>

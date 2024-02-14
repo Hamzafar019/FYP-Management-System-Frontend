@@ -42,7 +42,8 @@ const StudentFYPWorkSubmission = () => {
     try {
       const response = await fetch('http://localhost:3001/submission/view');
       const data = await response.json();
-      const submissionIds = data.map(submission => submission.id);
+      const submissionIds = data.map(submission => ({id:submission.id,
+      name:submission.name}));
 
     // Now set the submissionIds to your state variable or wherever you want to store it
     setSubmissionIds(submissionIds);
@@ -89,8 +90,8 @@ const StudentFYPWorkSubmission = () => {
           Select Submission ID:
           <select value={selectedSubmissionId} onChange={(e) => setSelectedSubmissionId(e.target.value)}>
             <option value="">Select Submission ID</option>
-            {submissionIds.map((id) => (
-              <option key={id} value={id}>{id}</option>
+            {submissionIds.map((submission) => (
+              <option key={submission.id} value={submission.id}>{submission.name}</option>
             ))}
           </select>
         </label>

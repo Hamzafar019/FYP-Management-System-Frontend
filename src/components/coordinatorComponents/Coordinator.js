@@ -29,7 +29,7 @@ const Coordinator = ({onSignOutClick}) => {
         <CoordinatorNavSidebar/>
         <div className="coordinator-content" style={{ marginTop: '110px' }}  >
           <Routes>
-            <Route exact path="/coordinator/" element={<CoordinatorHome />} />
+            <Route exact path="/coordinator/" element={<Scores />} />
             <Route exact path="/coordinator/newannouncement" element={<CoordinatorNewAnnouncement />} />
             <Route exact path="/coordinator/viewannouncements" element={<CoordinatorViewAnnouncements />} />
             <Route exact path="/coordinator/viewFYPideas" element={<ViewFYPIdeas />} />
@@ -37,7 +37,7 @@ const Coordinator = ({onSignOutClick}) => {
             <Route exact path="/coordinator/newRegistrations" element={<CoordinatorViewNewFYPRegistrations />} />
             <Route exact path="/coordinator/newSubmission" element={<CoordinatorCreateSubmission />} />
             <Route exact path="/coordinator/viewSubmission" element={<ViewSubmission />} />
-            <Route exact path="/coordinator/scores" element={<Scores />} />
+            <Route exact path="/coordinator/guidelines" element={<CoordinatorHome />} />
             <Route exact path="/coordinator/rejectedFYP" element={<Rejected_FYP />} />
             <Route exact path="/coordinator/allgroups" element={<CoordinatorAllGroups />} />
             <Route exact path="/coordinator/report" element={<CoordinatorReportGenerator />} />
