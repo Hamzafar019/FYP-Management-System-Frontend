@@ -19,6 +19,7 @@ import StudentMeetingDetails from "./StudentMeetingDetails";
 import ChangePassword from "../ChangePassword";
 import IndustryProjectsView from "../IndustryProjectsView";
 import Navbar from "../Navbar";
+import ViewDomainVideos from "../ViewDomainVideos";
 
 const Student = ({onSignOutClick}) => {
   
@@ -49,6 +50,8 @@ const Student = ({onSignOutClick}) => {
             <Route exact path="/student/viewwork" element={<StudentViewWork />} />
             <Route exact path="/changepassword" element={<ChangePassword />} />
             <Route exact path="/industryprojects" element={<IndustryProjectsView />} />
+            <Route exact path="/student/viewdomainvideos" element={<ViewDomainVideos />} />
+
 
             
 

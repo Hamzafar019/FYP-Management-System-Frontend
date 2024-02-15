@@ -28,7 +28,7 @@ function Scores() {
   };
 
   return (
-    <div style={{backgroundColor:"wheat",padding:"10px",borderRadius:"10px",border:"7px solid black"}}>
+    <div style={{marginTop: "180px",backgroundColor:"#0169CD",padding:"10px",borderRadius:"10px",border:"7px solid black"}}>
       <h2
         style={{
           marginTop: "20px",
@@ -42,13 +42,12 @@ function Scores() {
       {error && <p>Error: {error}</p>}
       {!error && !!marksData.length ? (
         <ul>
-          {marksData.map((group, index) => (
-            <li
-              key={index}
-              style={{
+          <li style={{
                 border: "1px solid #ccc",
                 borderRadius: "8px",
                 padding: "7px",
+                paddingTop:"20px",
+                paddingBottom:"20px",
                 backgroundColor:"black",
                 marginBottom: "16px",
                 marginTop: "16px",
@@ -56,29 +55,51 @@ function Scores() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+              }}>
+              
+          <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", gridColumnGap: "20px", width:"100%"}}>
+  <p >Group ID </p>
+  <p>Marks Obtained</p>
+  <p>Total Marks</p>
+  <p>Percentage %</p>
+  <p></p>
+</div>
+
+          </li>
+          {marksData.map((group, index) => (
+            
+            <li
+                
+         
+              key={index}
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "8px",
+                padding: "7px",
+                backgroundColor:"white",
+                marginBottom: "16px",
+                marginTop: "16px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                fontWeight: "bold",
+                color:"blue",
               }}
             >
+               <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", gridColumnGap: "20px", width:"100%"}}>
+ 
 
               
-              <div style={{ display: "flex", alignItems: "center" }}>
-                
-                <div>
-                  <p>Group ID: {group.groupId}</p>
-                  <p>Obtained Marks: {group.totalMarks}</p>
-                  <p>Total Marks: {totalWeightage}</p>
+                  <p>{group.groupId}</p>
+                  <p>{group.totalMarks}</p>
+                  <p>{totalWeightage}</p>
                   <p>
-                    Percentage:{" "}
+                    
                     {((group.totalMarks * 100) / totalWeightage).toFixed(2)}%
                   </p>
-                </div>
 
 
-
-              </div>
-              
-
-
-              {index < 3 && (
                   <div
                     style={{
                       width: "40px",
@@ -89,14 +110,16 @@ function Scores() {
                           ? "gold"
                           : index === 1
                           ? "silver"
-                          : "brown",
+                          : index === 2
+                          ? "brown"
+                          : "white",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                       marginRight: "10px",
                       right:"2px",
                       fontWeight: "bold",
-                      color: "white",
+                      color: "blue",
                     }}
                   >
                     {index === 0
@@ -105,9 +128,12 @@ function Scores() {
                       ? "2nd"
                       : index === 2
                       ? "3rd"
-                      : ""}
+                      : "___"}
+                      
                   </div>
-                )}
+                
+                
+                </div>
             </li>
           ))}
         </ul>

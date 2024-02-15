@@ -70,7 +70,7 @@ const Navbar = ({ onSignOutClick }) => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <span>Logo</span>
+          <span>FYP Management System</span>
         </div>
         <div id="navbar-buttons">
           <div className="navbar-actions" style={{color:"white",marginRight:"30px"}}>
