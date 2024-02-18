@@ -70,10 +70,10 @@ const Navbar = ({ onSignOutClick }) => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <span>FYP Management System</span>
+          <span style={{fontSize:"1.4rem"}}>FYP Management System</span>
         </div>
         <div id="navbar-buttons">
-          <div className="navbar-actions" style={{color:"white",marginRight:"30px"}}>
+          <div className="navbar-actions name" style={{color:"white",marginRight:"30px"}}>
             Hi, {name}
           </div>
           <div className="navbar-actions">
@@ -126,7 +126,7 @@ const Navbar = ({ onSignOutClick }) => {
               Change Password
             </Link>
           </div>
-          <div className="navbar-actions">
+          <div className="navbar-actions signout">
             <button className="signout-button" onClick={handleSignUpClick}>
               Sign Out
             </button>

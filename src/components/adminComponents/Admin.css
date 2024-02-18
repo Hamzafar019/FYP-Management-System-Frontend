@@ -12,7 +12,7 @@
   #navsidebar {
     overflow-y: auto;
     height: 100vh;
-    background-color: black;
+    background-color: #7C0000;
     width: 200px; /* Set the width for the navbar */
     padding: 10px;
     position: fixed; /* Change from absolute to fixed */
@@ -46,7 +46,7 @@
   }
   
   a:hover {
-    background-color: #555;
+    background-color: grey;
   }
   
   a {
@@ -96,10 +96,8 @@
 
 
 
-
-/* Registration Form */
 body {
-  background-color: #808c99; /* Blue background color */
+  background-color: white; /* Blue background color */
   margin: 0; /* Remove default margin on body */
   display: flex;
   align-items: center;

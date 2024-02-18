@@ -12,7 +12,7 @@
   #navsidebar {
     overflow-y: auto;
     height: 100vh;
-    background-color: black;
+    background-color: #7C0000;
     width: 200px; /* Set the width for the navbar */
     padding: 10px;
     position: fixed; /* Change from absolute to fixed */
@@ -58,7 +58,7 @@
   }
   
   a:hover {
-    background-color: #555;
+    background-color:grey;
   }
   
   a {

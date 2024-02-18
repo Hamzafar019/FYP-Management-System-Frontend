@@ -73,8 +73,10 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <div className="login-form">
-      <h1>Login Form</h1>
+    <div className='body'>
+    <h1 style={{marginTop:"-50px",color:"#7C0000",fontSize:"3rem"}}>FYP Management<br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System</h1>
+    <h2 style={{marginTop:"40px",color:"#7C0000",fontSize:"2rem"}}>Sign In</h2>
+    <div className="login-form" >
       <form>
         <label>Email:</label>
         <input type="email" value={email} onChange={handleEmailChange} />
@@ -93,6 +95,7 @@ const LoginForm = ({ onLogin }) => {
 
         {error && <p className="error-message">{error}</p>}
       </form>
+    </div>
     </div>
   );
 };

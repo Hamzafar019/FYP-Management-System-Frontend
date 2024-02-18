@@ -1,6 +1,6 @@
 /* Navbar.css */
 .navbar {
-  background-color: blue;
+  background-color: grey;
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,17 @@
   z-index: 1;
   height:50px;
 }
-
+.name:hover{
+  
+  background-color: blue;
+  border-radius: 5px;
+}
+.signout:hover{
+  
+  background-color: blue;
+  border-radius: 5px;
+  width: 100px;
+}
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -54,6 +64,14 @@
   flex-direction: row;
 }
 
+.notification-button:hover{
+  
+  background-color: blue;
+  align-items: center;
+  border-radius: 5px;
+  width: 10px;
+  height: 35px;
+}
 .notification-button {
   background: none;
   border: none;

@@ -28,7 +28,7 @@ function Scores() {
   };
 
   return (
-    <div style={{marginTop: "180px",backgroundColor:"#0169CD",padding:"10px",borderRadius:"10px",border:"7px solid black"}}>
+    <div style={{marginTop: "180px",padding:"10px",borderRadius:"10px",border:"7px solid black",backgroundImage: 'linear-gradient(to bottom right, pink, white)'}}>
       <h2
         style={{
           marginTop: "20px",
@@ -84,7 +84,7 @@ function Scores() {
                 justifyContent: "space-between",
                 alignItems: "center",
                 fontWeight: "bold",
-                color:"blue",
+                color:"black",
               }}
             >
                <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", gridColumnGap: "20px", width:"100%"}}>
@@ -119,7 +119,7 @@ function Scores() {
                       marginRight: "10px",
                       right:"2px",
                       fontWeight: "bold",
-                      color: "blue",
+                      color: "black",
                     }}
                   >
                     {index === 0
